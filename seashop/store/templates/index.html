@@ -1,0 +1,148 @@
+{%extends 'base.html'%} {%block content %} {%load static%}
+{%load product%}
+<!-- /.container-->
+<div class="slideshow-container">
+  <div class="mySlides">
+    <div class="numbertext"></div>
+    <a href=""
+      ><img src="{%static 'uploads/slide.jpg'%}" style="width: 100%"
+    /></a>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext"></div>
+    <a href=""
+      ><img src="{%static 'uploads/slide-2.jpg'%}" style="width: 100%"
+    /></a>
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext"></div>
+    <a href=""
+      ><img src="{%static 'uploads/slide-3.jpg'%}" style="width: 100%"
+    /></a>
+  </div>
+
+  <div style="text-align: center">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+<div class="spbc">
+  <h1><a href="">Sản Phẩm Bán Chạy</a></h1>
+</div>
+<div class="container-fluid">
+  <div class="product-content">
+    {%for x in prt%}
+    {%if forloop.counter|countprt:prt %}
+      </div>
+      <div class="product-content"> 
+ {%endif%} 
+    <div class="column">
+      <a href="product={{x.name}}"
+        ><img src="{{x.image}}" alt="Snow" style="width: 100%"
+      /></a>
+      <figcaption>
+        <div><a href="product={{x.id}}">{{x.name}}</a></div>
+        <br />
+        <div class="price">{{x.price}}</div>
+      </figcaption>
+    </div>
+       {%if forloop.counter == 8%}
+      </div>
+      {%endif%} 
+    {%endfor%} 
+  </div>
+{% comment %} </div> {% endcomment %}
+
+<div class="spbc">
+  <h1><a href="">Hàng Mới Về</a></h1>
+</div>
+<div class="owl-slider">
+  <div id="carousel" class="owl-carousel">
+    {%for x in prt%}
+    <div class="item">
+      <a href="product={{x.id}}"><img src="{{x.image}}" alt="" /></a>
+      <figcaption>
+        <div><a href="product={{x.id}}">{{x.name}}</a></div>
+        <br />
+        <div class="price">{{x.price}}</div>
+      </figcaption>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+
+<!-- NEW -->
+<div class="spbc">
+  <h1><a href="">Tin Tức</a></h1>
+</div>
+<div class="news-content">
+  <div class="news">
+    <a href=""
+      ><img src="{%static 'uploads/thumb.jpg'%}" alt="news" style="width: 100%"
+    /></a>
+    <figcaption>
+      <div class="datetime">23/11/2021</div>
+      <br />
+      <h3>
+        <div class="tittle">
+          <a href="">BLACK FRIDAY – SALE SẬP SÀN HÀNG...</a>
+        </div>
+      </h3>
+      <br />
+      <div class="mini-tittle">
+        Cơ hội mua sắm không cần nhìn giá có 1-0-2 đã chính thức bắt đầu. Hàng
+        ngàn sản phẩm với mức...
+      </div>
+    </figcaption>
+  </div>
+  <div class="news">
+    <a href=""
+      ><img
+        src="{%static 'uploads/thumb (1).jpg'%}"
+        alt="news"
+        style="width: 100%"
+    /></a>
+    <figcaption>
+      <div class="datetime">22/11/2021</div>
+      <br />
+      <h3>
+        <div class="tittle">
+          <a href="">Top 5 áo khoác nam giới phải có trong tủ đồ</a>
+        </div>
+      </h3>
+      <br />
+      <div class="mini-tittle">
+        Với xu hướng hiện đại, một chiếc áo khoác không chỉ giúp bạn chống lại
+        thời tiết mà nó còn...
+      </div>
+    </figcaption>
+  </div>
+  <div class="news">
+    <a href=""
+      ><img
+        src="{%static 'uploads/thumb (2).jpg'%}"
+        alt="news"
+        style="width: 100%"
+    /></a>
+    <figcaption>
+      <div class="datetime">11/11/2021</div>
+      <br />
+      <h3>
+        <div class="tittle">
+          <a href="">BÙNG NỔ LOẠT CHƯƠNG TRÌNH MỪNG 360...</a>
+        </div>
+      </h3>
+      <br />
+      <div class="mini-tittle">
+        Nhân dịp sinh nhật lên 7, 360 boutique GIẢM GIÁ LÊN ĐẾN 50% toàn bộ
+        hoodie, khoác gió, quần jeans,...
+      </div>
+    </figcaption>
+  </div>
+</div>
+
+{%endblock%}
+<!--End content-->

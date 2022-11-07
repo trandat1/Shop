@@ -1,0 +1,113 @@
+{% extends 'base.html' %}{%load static%}{%block content%}
+<div class="container-content">
+  <div class="container-fluid">
+    <div class="breadcrumb-shop">
+      <ol class="breadcrumb breadcrumb-arrows">
+        <li>
+          <a href="index1.html">Trang chủ</a>
+        </li>
+        /
+        <li>
+          <a href="">Sản phẩm quần áo nam thời trang nam mới nhất</a>
+        </li>
+        /
+        <li>
+          <a href="">Sản phẩm</a>
+        </li>
+        /
+        <li>
+          <a href="">Thời trang nam</a>
+        </li>
+        /
+        <li>
+          <a href="">Áo</a>
+        </li>
+        /
+        <li>{{prt.name}}</li>
+      </ol>
+    </div>
+    <form action="?/" method="post">
+      {% csrf_token %}
+    <div class="product-detail-wrapper">
+      <div class="product-detail-main">
+        <div class="product-content-img">
+          <div class="product-gallery">
+            <img id="featured" src="{{prt.image}}" />
+
+            <div id="slide-wrapper">
+              <img
+                id="slideLeft"
+                class="arrow"
+                src="{%static 'uploads/arrow-left.png'%}"
+              />
+
+              <div id="slider">
+                <img class="thumbnail active" src="{{prt.image}}" />
+                <img class="thumbnail" src="{{prt.image}}" />
+                <img class="thumbnail" src="{{prt.image}}" />
+
+                <img class="thumbnail" src="{{prt.image}}" />
+                <img class="thumbnail" src="{{prt.image}}" />
+                <img class="thumbnail" src="{{prt.image}}" />
+              </div>
+
+              <img
+                id="slideRight"
+                class="arrow"
+                src="{%static 'uploads/arrow-right.png'%}"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="product-content-desc">
+          <div class="product-title">
+            <h1>{{prt.name}}</h1>
+          </div>
+          <div class="product-price">{{prt.price}}₫</div>
+          <div class="product-size">
+            <div>cỡ</div>
+            <div class="choice-size">
+              {%for x in pro%}
+              <input type="radio" id="{{x.size}}" name="size" value="{{x.size}}" required/>
+              <label for="{{x.size}}">{{x.size}}</label>  
+              {{x.quantity}}
+              {%endfor%}
+            </div>
+          </div>
+
+          
+          <div class="input-number-wrapper">
+            
+            <button type="button" class="decrease"><i class="fa fa-minus">-</i></button>
+            <input type="text" value="0" min="1" id="intTextBox" name="quatity" required />
+            <button type="button" class="increase"><i class="fa fa-plus">+</i></button>
+          </div>
+          
+          <div class="wrap-add-cart">
+             {% comment %} {{prt|cart_quatity:request.session.cart}}<br>
+            {{prt|is_in_cart:request.session.cart}}  {% endcomment %}
+              
+              <input type="hidden" value="{{prt.id}}" name="pro" >
+              <button
+                type="submit"
+                class="add-to-cart button-dark button-addtocart button"
+              >
+                Thêm Vào Giỏ Hàng
+              </button>
+            </form>
+          </div>
+          <div class="product-description">
+            <div class="" title-bl>
+              <h2>Mô tả</h2>
+            </div>
+            <div class="description-content">
+              <p>{{prt.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

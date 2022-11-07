@@ -1,0 +1,64 @@
+{%extends 'base.html'%} {%block content %}
+
+<div class="container-content">
+  <div class="container-fluid">
+    <div class="breadcrumb-shop">
+      <ol class="breadcrumb breadcrumb-arrows">
+        <li>
+          <a href="/">Trang chủ</a>
+        </li>
+        /
+        <li>Tài khoản</li>
+        /
+        <li>Đăng nhập</li>
+      </ol>
+    </div>
+    <br />
+    <div class="content-page">
+      <div class="account-content">
+        <div class="login-content">
+          <h2>Đăng nhập</h2>
+          <form action="login" class="form-login" method="POST" name="login">
+            {% csrf_token %}
+            <p class="form-row">
+              <label for="username"> Tên tài khoản hoặc địa chỉ email </label>
+              <input
+                type="text"
+                class="input-account input-text"
+                required
+                name="username"
+                id="username"
+              />
+            </p>
+            <p class="form-row">
+              <label for="password"> Mật khẩu </label>
+              <input
+                type="password"
+                class="input-account input-text"
+                required
+                name="password"
+                id="password"
+              />
+            </p>
+            <p class="form-row">
+              <button
+                type="submit"
+                class="submit-account"
+                name="login"
+                value=""
+              >
+                Đăng nhập
+              </button>
+              <input type="checkbox" onclick="showpassword()" />Hiện mật khẩu
+            </p>
+            <p class="page-row">
+              Chưa có tài khoản?
+              <a href="register"><strong>Đăng ký</strong></a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock %}

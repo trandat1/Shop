@@ -1,0 +1,508 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Shop</title>
+    <link href="{%static 'css/style.css'%}" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="{%static 'uploads/LOGO-360-DUNG-TAM-THOI-MAU-DEN-05.png'%}">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0" nonce="qBXndxe2"></script>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <div id="topbar">
+      <div>
+        <div class="topbar-content text-center">
+          <p>Hotline Mua Hàng: 0973 285 886 | Hotline CSKH: 1900 886 803 - Ext 1 | Email CSKH: web@360boutique.vn </p>
+        </div>
+      </div>
+    </div>
+
+    <header id="site-header" class="main-header">
+      <div class="header-mid wrap-flex-align">
+        <div class="wrap-logo">
+          <a href="/">
+            <img src="{%static 'uploads/LOGO-360-DUNG-TAM-THOI-MAU-DEN-05.png'%}" class="img-responsive logoimg">
+          </a>
+        </div>
+        <div class="visible-lg visible-md col-header-mid header-mid-search">
+          <div class="search-box wpo-wraper-search">
+              <form action="" class="searchform">
+                <div class="wpo-search-inner">
+                  <input type="text" required id="inputsearchauto-mb" name="s" maxlength="40" autocomplete="off" class="searchinput input-search search-input" size="20" placeholder="Tìm kiếm sản phẩm ...">
+                  <input name="post_type" value="product" type="hidden">
+                </div>
+                <button type="submit" class="btn-search btn" id="search-header-btn-mb">
+      						<svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve"><path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z"></path><rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8"></rect></svg>
+      					</button>
+              </form>
+          </div>
+        </div>
+
+        <div class="header-wrap-icon">
+          <a {%if user%}href="customer"{%else%}href="login"{%endif%}>
+            <span class="account-menu icon-account" aria-hidden="true" title="Tài Khoản">
+              <svg class="svg-account" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
+                <g><g id="account-circle">
+                  <path d="M255,0C114.75,0,0,114.75,0,255s114.75,255,255,255s255-114.75,255-255S395.25,0,255,0z M255,76.5
+                           c43.35,0,76.5,33.15,76.5,76.5s-33.15,76.5-76.5,76.5c-43.35,0-76.5-33.15-76.5-76.5S211.65,76.5,255,76.5z M255,438.6
+                           c-63.75,0-119.85-33.149-153-81.6c0-51,102-79.05,153-79.05S408,306,408,357C374.85,405.45,318.75,438.6,255,438.6z"/>
+                  </g></g>
+              </svg>
+            </span>
+          </a>
+          <span id="site-cart-handle" class="icon-cart" aria-label="Open cart" title="Giỏ hàng">
+           <a href="cart">
+            <span class="cart-menu" aria-hidden="true">
+              <svg version="1.1" class="svg-cart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
+                <g>
+                  <path d="M0,6v21h24V6H0z M22,25H2V8h20V25z" />
+                </g>
+                <g>
+                  <path d="M12,2c3,0,3,2.3,3,4h2c0-2.8-1-6-5-6S7,3.2,7,6h2C9,4.3,9,2,12,2z" />
+                </g>
+              </svg>
+              <span class="count-holder"><span class="count">0</span></span>
+            </span>
+           </a>
+          </span>    
+          <span id="site-menu-handle" class="hamburger-menu visible-sm visible-xs"  aria-hidden="true" onclick="openNav()" ><span class="bar">                
+        </div>
+      </header>
+    <div class="navbar">
+      <a href="">Giới Thiệu</a>
+      <div class="dropdown">
+        <button class="dropbtn"><a href="">Sản Phẩm</a>
+          <i class="fa fa-caret-down"></i>
+        </button>
+      
+        <div class="dropdown-content">
+         
+          <div class="row">
+            <div class="column">
+              <h3><a href="/?category=Ao Nam">Áo Nam</a></h3>
+              <a href="/?categorydetail=Ao PoLo">Áo Polo</a>
+              <a href="/?categorydetail=Ao Phong">Áo Phông</a>
+              <a href="/?categorydetail=Ao So Mi Dai Tay">Áo SƠ Mi Dài Tay</a>
+              <a href="/?categorydetail=Ao Sơ Mi Ngan Tay">Áo Sơ Mi Ngắn Tay</a>
+              <a href="/?categorydetail=Ao Ni">Nỉ</a>
+              <a href="/?categorydetail=Ao Khoac">Khoác</a>
+              <a href="/?categorydetail=Ao Vest">Áo Vest</a>
+            </div>
+
+            <div class="column">
+              <h3><a href="/?category=Quan Nam">Quần Nam</a></h3>
+              <a href="/?categorydetail=Quan Au ">Quần Âu</a>
+              <a href="/?categorydetail=Quan Jenans">Quần Jeans </a>
+              <a href="/?categorydetail=Quan Kaki">Quần Kaki</a>
+              <a href="/?categorydetail=Quan Jogger">Quần Jogger</a>
+              <a href="/?categorydetail=Quan Short">Quần Short</a>
+            </div>
+            <div class="column">
+              <h3><a href="/?category=Phu Kien Nam">Phụ Kiện Nam</a></h3>
+              <a href="/?categorydetail=BaLo ">Balo Đeo Chéo</a>
+              <a href="/?categorydetail=Kinh">Kính</a>
+              <a href="/?categorydetail=Mu">Mũ</a>
+              <a href="/?categorydetail=Vi">Ví Da</a>
+            </div>
+            <div class="column">
+              <h3><a href="/?category=Giay Rep">Giày Rép Nam</a></h3>
+              <a href="/?categorydetail=Giay">Giày</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="dropmini">
+          <button class="dropbutton"><a href="">khuyến mãi</a>
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropmini-content">
+              <a href="">Sale Đồng Giá 99k</a>
+              <a href="">Sale Đồng Giá 199k</a>
+              <a href="">Sale Đồng giá 599k</a>
+              <a href="">Sale 10%</a>
+              <a href="">Sale 20%</a>
+              <a href="">Sale 30%</a>
+              <a href="">Sale 50%</a>
+              <a href="">Sale 70%</a>
+            </div>
+      </div>
+      <a href="">Tin Tức</a>
+      <a href="">Tuyển Dụng</a>
+      <a href="">Hệ Thống Cửa Hàng</a>
+    </div>  
+<div class="search-bar-mobile">
+	<div class="search-box wpo-wrapper-search">
+		<form action="" class="searchform">
+			<div class="wpo-search-inner">
+				<input required id="inputSearchAuto-mb" name="s" maxlength="40" autocomplete="off" class="searchinput input-search search-input" type="text" size="20" placeholder="Tìm kiếm sản phẩm...">
+				<input name="post_type" value="product"  type="hidden">
+			</div>
+			<button type="submit" class="btn-search btn" id="search-header-btn-mb">
+				<svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve"><path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z"></path><rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8"></rect></svg>
+			</button>
+		</form>
+	</div>
+</div>    
+         
+<!--container-->
+{%block content%}
+{%endblock%}
+<!--End Contener-->
+
+
+<div class="main-footer">
+        <div class="footer-row">
+          <div class="footer-title">
+            <h4>
+            HỆ THỐNG CỬA HÀNG
+          </h4>
+          </div>  
+          <div class="footer-content">
+            <ul>
+              <li>242 Thái Hà, Q.Đống Đa, HN</li>
+              <li><a href="">20 Dương Quảng Hàm, Q.Cầu Giấy, HN</a></li>
+              <li><a href="">11 Dương Quảng Hàm, </a><a href="">Q.Cầu Giấy</a><a href="/">, HN</a></li>
+              <li><a href="">63 Đại Cổ Việt, Q.Hai Bà Trưng, HN</a></li>
+              <li><a href="">27 Chùa Bộc, Q.Đống Đa, HN</a></li>
+              <li><a href="">296 Nguyễn Trãi, Q.Nam Từ Liêm, HN</a></li>
+              <li><a href="">116 Hồ Tùng Mậu,Q.Cầu Giấy, HN</a></li>
+              <li><a href="">37 Trung Kính, Q.Cầu Giấy, HN</a></li>
+              <li><a href="">346 Cầu Giấy, Q.Cầu Giấy, HN</a></li>
+              <li><a href="">272 Tô Hiệu, Q.Lê Chân, HP</a></li>
+              <li><a href="">252 Hồ Tùng Mậu, Q.Bắc Từ Liêm, 360Kids</a></li>
+              </ul>
+          </div>
+        </div>
+        <div class="footer-row">
+          <div class="footer-title">
+            <h4>
+            CHÍNH SÁCH VÀ QUY ĐỊNH CHUNG
+          </h4>
+          </div> 
+          <div class="footer-content">
+            <ul>
+              <ul id="menu-chinh-sach-va-quy-dinh-chung" class="nav_menu">
+                <li id="menu-item-3664" class="menu-item menu-item-type-custom menu-item-object-custom first menu-item-3664"><a href="">Hướng Dẫn Mua Hàng</a></li>
+                <li id="menu-item-3665" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3665"><a href="">Hình Thức Thanh Toán</a></li>
+                <li id="menu-item-3666" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3666"><a href="">Quy Định Về Bảo Mật Thông Tin</a></li>
+                <li id="menu-item-3667" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3667"><a href="">Chính Sách Bảo Hành</a></li>
+                <li id="menu-item-3669" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3669"><a href="">Chính Sách Đổi Trả Hàng</a></li>
+                <li id="menu-item-3670" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3670"><a href="">C hính Sách Vận Chuyển</a></li>
+                <li><a href="">Điều Khoản Dịch Vụ</a></li>
+                <li id="menu-item-13457" class="menu-item menu-item-type-post_type menu-item-object-page last menu-item-13457"><a href="">Giới Thiệu</a></li>
+                </ul>
+          </div>
+        </div> 
+        <div class="footer-row" id=1>
+          <div class="footer-title">
+            <h4>
+            ĐỊA CHỈ
+
+          </h4>
+          </div> 
+          <div class="footer-content">
+            <ul>
+              <p><strong>CÔNG TY CỔ PHẦN THỜI TRANG 360</strong></p>
+              <p>Trụ sở: Đội 6 Phương Đình, Đan Phượng, Hà Nội</p>
+              <p>Facebook thời trang nam: <a href="" target="_blank" rel="noopener">360Boutique</a></p>
+              <p>Facebook kids: <a href="">360Kids</a></p>
+              <p>Hotline: <a title="0973285886" href="tel:0973285886">0973 285 886</a></p>
+              <p>Email: <a title="web@360boutique.vn" href="">web@360boutique.vn</a></p>
+              <p>Website: <a href="">https://360boutique.vn/</a></p>
+              <p>GPKD: 0107756568</p>
+              <div>
+                <a href="">
+                  <img src="{% static 'uploads/da-thong-bao.png' %}" alt=width="185" height="58" data-was-processed="true">
+                </a>
+              </div>
+              </ul>
+          </div>
+          
+        </div> 
+        <div class="footer-row">
+          <div class="footer-title">
+            <h4>
+            Fanpage
+          </h4>
+          </div> 
+          <div class="footer-content">
+            <div class="fb-page" data-href="https://www.facebook.com/Qu%E1%BA%A7n-%C3%A1o-nam-106075691950381" data-tabs="timeline" data-width="340" data-height="300" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Qu%E1%BA%A7n-%C3%A1o-nam-106075691950381" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Qu%E1%BA%A7n-%C3%A1o-nam-106075691950381">Quần áo nam</a></blockquote></div>
+          </div>      
+        </div>    
+    </div>
+
+    
+
+    
+    <div class="bottom-footer text-center">
+      <div class="footer">
+        <p>Copyright © 2017 360boutique. All Rights Reserved</p>
+      </div>
+    </div>
+
+    <!-- back to top -->
+    <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+    <!---->
+    
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="menu">
+        <div class="item"><a href="#" class="sub-btn">Giới thiệu</a></div>
+        <div class="item">
+          <a class="sub-btn">Sản Phẩm</a>
+          <div class="sub-menu">
+         
+            <a href="#" class="sub-item">Áo</a>
+            <a href="#" class="sub-item">Quần</a>
+            <a href="#" class="sub-item">Phụ Kiện</a>
+            <a href="#" class="sub-item">Giày Dép</a>
+          </div>
+        </div>
+        <div class="item">
+          <a class="sub-btn">Khuyến Mãi</a>
+        </div>
+        <div class="item"><a href="#" class="sub-btn">Tin Tức</a></div>
+        <div class="item"><a href="#" class="sub-btn">Tuyển Dụng</a></div>
+        <div class="item"><a href="#" class="sub-btn">Hệ Thống Cửa Hàng</a></div>
+      </div>
+    </div>
+    </div>    
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
+      
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+      </script>
+
+
+
+    <script src="{%static 'js/script.js'%}"></script>
+    <script src="{%static 'js/jquery.min.js'%}"></script>
+    <script src="{%static 'js/bootstrap.min.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{%static 'OwlCarousel2-2.3.4/dist/owl.carousel.min.js'%}"></script>
+    <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  jQuery("#carousel").owlCarousel({
+  autoplay: true,
+  rewind: true, /* use rewind if you don't want loop */
+  margin: 20,
+   /*
+  animateOut: 'fadeOut',
+  animateIn: 'fadeIn',
+  */
+  responsiveClass: true,
+  autoHeight: true,
+  autoplayTimeout: 7000,
+  smartSpeed: 800,
+  nav: true,
+  responsive: {
+    0: {
+      items: 2
+    },
+
+    600: {
+      items: 3
+    },
+
+    1024: {
+      items: 4
+    },
+
+    1366: {
+      items: 4
+    }
+  }
+});
+    
+  
+    
+  </script>
+                  
+
+
+  
+  
+
+    
+    <script type="text/javascript">
+      let thumbnails = document.getElementsByClassName('thumbnail')
+    
+      let activeImages = document.getElementsByClassName('active')
+    
+      for (var i=0; i < thumbnails.length; i++){
+    
+          thumbnails[i].addEventListener('mouseover', function(){
+              console.log(activeImages)
+              
+              if (activeImages.length > 0){
+                  activeImages[0].classList.remove('active')
+              }
+              
+    
+              this.classList.add('active')
+              document.getElementById('featured').src = this.src
+          })
+      }
+    
+    
+      let buttonRight = document.getElementById('slideRight');
+      let buttonLeft = document.getElementById('slideLeft');
+    
+      buttonLeft.addEventListener('click', function(){
+          document.getElementById('slider').scrollLeft -= 180
+      })
+    
+      buttonRight.addEventListener('click', function(){
+          document.getElementById('slider').scrollLeft += 180
+      })
+    
+    
+    </script>
+    
+    
+   
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var inputs = document.getElementsByClassName('input-number-wrapper')
+    
+    function incInputNumber(input, step) {
+        var val = +input.value
+        if (isNaN(val)) val = 0
+        val += step
+        input.value = val > 0 ? val: 0
+    }
+    
+    Array.prototype.forEach.call(inputs, function(el) {
+        var input = el.getElementsByTagName('input')[0]
+        
+        el.getElementsByClassName('increase')[0].addEventListener('click', function() { incInputNumber(input, 1) })
+        el.getElementsByClassName('decrease')[0].addEventListener('click', function() { incInputNumber(input, -1) })
+    })
+    })
+    
+    $( "#spinner" ).spinner();
+  </script>
+
+    <script>//side menu drop down
+  
+      $(document).ready(function(){
+        //jquery for toggle sub menus
+        $('.sub-btn').click(function(){
+          $(this).next('.sub-menu').slideToggle();
+          $(this).find('.dropdown').toggleClass('rotate');
+        });
+   
+        //jquery for expand and collapse the sidebar
+        $('.menu-btn').click(function(){
+          $('.side-bar').addClass('active');
+          $('.menu-btn').css("visibility", "hidden");
+        });
+   
+        $('.close-btn').click(function(){
+          $('.side-bar').removeClass('active');
+          $('.menu-btn').css("visibility", "visible");
+        });
+      });
+    </script>
+    
+    <script>
+      if ($('#back-to-top').length) {
+      var scrollTrigger = 1, // px
+          backToTop = function () {
+              var scrollTop = $(window).scrollTop();
+              if (scrollTop > scrollTrigger) {
+                  $('#back-to-top').addClass('show');
+              } else {
+                  $('#back-to-top').removeClass('show');
+              }
+          };
+      backToTop();
+      $(window).on('scroll', function () {
+          backToTop();
+      });
+      $('#back-to-top').on('click', function (e) {
+          e.preventDefault();
+          $('html,body').stop().animate({
+              scrollTop: 0
+          }, 700);
+      });
+    }
+    </script>
+
+    <script>
+      function showpassword() {
+        var x = document.getElementById("password");
+        var y=document.getElementById("repassword")
+        if (x.type === "password") {
+          x.type = "text";
+          y.type = "text";
+        } else {
+          x.type = "password";
+          y.type = "password"
+        }
+      }
+    </script>
+<script>
+function setInputFilter(textbox, inputFilter) {
+  [
+    "input",
+    "keydown",
+    "keyup",
+    "mousedown",
+    "mouseup",
+    "select",
+    "contextmenu",
+    "drop",
+  ].forEach(function (event) {
+    textbox.addEventListener(event, function () {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  });
+}
+
+setInputFilter(document.getElementById("intTextBox"), function(value) {
+  return /^\d*$/.test(value); });
+    </script>
+    
+  </body>
+</html>

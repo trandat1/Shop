@@ -1,0 +1,97 @@
+{%extends 'base.html' %} {%block content %}
+<div class="container-content">
+  <div class="container-fluid">
+    <div class="breadcrumb-shop">
+      <ol class="breadcrumb breadcrumb-arrows">
+        <li>
+          <a href="index1.html">Trang chủ</a>
+        </li>
+        /
+        <li>Tài khoản</li>
+        /
+        <li>Đăng ký</li>
+      </ol>
+    </div>
+    <br />
+    <div class="content-page">
+      <div class="account-content">
+        <div class="register-content">
+          <h2>Đăng kí</h2>
+          <form action="register" method="post" class="form-register">
+            {%csrf_token %}
+            <p class="form-row">
+              <label for="email"> Địa chỉ email </label>
+              <input
+                type="text"
+                class="input-account input-text"
+                required
+                name="email"
+                id="email"
+                value="{{email}}"
+                {%if erro.email%}
+                placeholder="{{erro.email}}"
+                value=""
+                style="border-color: #e74c3c"
+                {%endif %}
+              />
+            </p>
+            <p class="form-row">
+              <label for="usernmae"> Tên tài khoản </label>
+              <input
+                type="text"
+                class="input-account input-text"
+                required
+                name="userName"
+                value="{{userName}}"
+                {%if erro.username%}
+                placeholder="{{erro.username}}"
+                value=""
+                style="border-color: #e74c3c"
+                {%endif%}
+                id="username"
+              />
+            </p>
+            <p class="form-row">
+              <label for="password"> Mật khẩu </label>
+              <input
+                type="password"
+                class="input-account input-text"
+                {%if erro.password%}
+                placeholder="{{erro.password}}"
+                style="border-color: #e74c3c"
+                {%endif%}
+                name="password"
+                required
+                id="password"
+              />
+            </p>
+            <p class="form-row">
+              <label for="repassword"> Nhập lại mật khẩu </label>
+              <input
+                type="password"
+                class="input-account input-text"
+                {%if erro.repassword%}
+                placeholder="{{erro.repassword}}"
+                style="border-color: #e74c3c"
+                {%endif%}
+                required
+                name="repassword"
+                id="repassword"
+              />
+            </p>
+            <p class="form-row">
+              <button type="submit" class="submit-account" value="">
+                Đăng ký
+              </button>
+              <input type="checkbox" onclick="showpassword()" />Hiện mật khẩu
+            </p>
+            <p class="form-row">
+              Đã có tài khoản? <a href="login"><strong>Đăng nhập</strong></a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock %}
