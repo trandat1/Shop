@@ -26,7 +26,7 @@ class size(admin.ModelAdmin):
 
 
 class Categorydetail(admin.ModelAdmin):
-    list_display = ['Categorize']
+    list_display = ['Categorize','Product']
 
 
 # Register your models here.

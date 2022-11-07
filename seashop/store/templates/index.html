@@ -33,9 +33,8 @@
   <h1><a href="">Sản Phẩm Bán Chạy</a></h1>
 </div>
 <div class="container-fluid">
-  <div class="product-content">
     {%for x in prt%}
-    {%if forloop.counter|countprt:prt %}
+    {%if forloop.counter0|countprt%}
       </div>
       <div class="product-content"> 
  {%endif%} 
@@ -49,12 +48,9 @@
         <div class="price">{{x.price}}</div>
       </figcaption>
     </div>
-       {%if forloop.counter == 8%}
-      </div>
-      {%endif%} 
     {%endfor%} 
   </div>
-{% comment %} </div> {% endcomment %}
+
 
 <div class="spbc">
   <h1><a href="">Hàng Mới Về</a></h1>
