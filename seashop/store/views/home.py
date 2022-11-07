@@ -14,7 +14,7 @@ def index(request):
     category_name = request.GET.get('category')
     category_detail = request.GET.get('categorydetail')
     cart = request.session.get('cart')
-    print(cart)
+    # print(cart)
     if not cart:
         request.session['cart'] = []
     if category_name:

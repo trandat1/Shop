@@ -8,7 +8,7 @@ from django.views import View
 
 class cart(View):
     def get(self, request, name):
-        request.session.clear()
+        # request.session.clear()
         prt = Product.get_product_by_name(name)
         pro = Productdetail. get_size_product(name)
         template = loader.get_template('products/info.html')
@@ -22,20 +22,31 @@ class cart(View):
         products = request.POST.get('pro')
         cart_ = request.session.get('cart')
         cart__ = {}
+        q = int(request.POST.get('quatity'))
+        s = request.POST.get('size')
+        status = 0
         if cart_:
-            q = int(request.POST.get('quatity'))
-            s = request.POST.get('size')
             for x in cart_:
-                pass
-            quatity = cart_.get(products)
-            cart_['size'] = s
-            if quatity:
-                cart_[products] = quatity+q
+                if x.get('product') == products and x.get('size') == s:
+                    status = 1
+                    break
+                else:
+                    status = 0
+            if status == 1:
+                for x in cart_:
+                    if x.get('product') == products and x.get('size') == s:
+                        x['quatity'] = x.get('quatity') + q
             else:
-                cart_[products] = 1
+                cart__['product'] = products
+                cart__['size'] = s
+                cart__['quatity'] = q
+                cart_.append(cart__)
         else:
             cart_ = []
-        #     cart_[products] = 1
-        # request.session['cart'] = cart_
-        print(cart_)
+            cart__['product'] = products
+            cart__['size'] = s
+            cart__['quatity'] = q
+            cart_.append(cart__)
+        request.session['cart'] = cart_
+        print(request.session['cart'])
         return HttpResponseRedirect(reverse('index'))
