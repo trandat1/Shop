@@ -288,29 +288,8 @@
     <script src="{%static 'js/jquery.min.js'%}"></script>
     <script src="{%static 'js/bootstrap.min.js'%}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="{%static 'OwlCarousel2-2.3.4/dist/owl.carousel.min.js'%}"></script>
+
     <script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   jQuery("#carousel").owlCarousel({
   autoplay: true,
@@ -343,16 +322,7 @@
     }
   }
 });
-    
-  
-    
   </script>
-                  
-
-
-  
-  
-
     
     <script type="text/javascript">
       let thumbnails = document.getElementsByClassName('thumbnail')
@@ -388,31 +358,6 @@
     
     
     </script>
-    
-    
-   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var inputs = document.getElementsByClassName('input-number-wrapper')
-    
-    function incInputNumber(input, step) {
-        var val = +input.value
-        if (isNaN(val)) val = 0
-        val += step
-        input.value = val > 0 ? val: 0
-    }
-    
-    Array.prototype.forEach.call(inputs, function(el) {
-        var input = el.getElementsByTagName('input')[0]
-        
-        el.getElementsByClassName('increase')[0].addEventListener('click', function() { incInputNumber(input, 1) })
-        el.getElementsByClassName('decrease')[0].addEventListener('click', function() { incInputNumber(input, -1) })
-    })
-    })
-    
-    $( "#spinner" ).spinner();
-  </script>
-
     <script>//side menu drop down
   
       $(document).ready(function(){
