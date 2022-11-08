@@ -86,7 +86,7 @@
           <div class="wrap-add-cart">
              {% comment %} {{prt|cart_quatity:request.session.cart}}<br>
             {{prt|is_in_cart:request.session.cart}}  {% endcomment %}
-              
+              {%if user%}
               <input type="hidden" value="{{prt.id}}" name="pro" >
               <button
                 type="submit"
@@ -94,6 +94,14 @@
               >
                 Thêm Vào Giỏ Hàng
               </button>
+              {%else %}
+              <a type="button" style="border-style:solid;"
+                href="login"
+                class="add-to-cart button-dark button-addtocart button"
+              >
+                Thêm Vào Giỏ Hàng
+            </a>
+              {%endif%}
             </form>
           </div>
           <div class="product-description">
