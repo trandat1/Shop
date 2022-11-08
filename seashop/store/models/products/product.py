@@ -22,3 +22,5 @@ class Product(models.Model):
 
     def get_product_by_name(name):
         return Product.objects.all().get(name=name)
+    def get_product_by_id(id):
+        return Product.objects.all().get(id=id)

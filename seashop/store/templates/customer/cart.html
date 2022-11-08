@@ -1,4 +1,5 @@
 {%extends 'base.html'%}{%block content %}{%load static%}
+{%load cart%}
 <div class="content-page">
     <div class="woocommerce">
       <form class="woocommerce-cart-form" method="post">
@@ -27,13 +28,13 @@
               </td>
                 <td class="product-thumbnail">
                   <a href="">
-			<img width="600" height="600" src="static/uploads/ALECN205-6-400x600.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" sizes="(max-width: 600px) 100vw, 600px" /></a>
+			<img width="600" height="600" src="{{x|imgproduct}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" sizes="(max-width: 600px) 100vw, 600px" /></a>
 		</td>
                 <td class="product-name" >
-                  <a href="">Áo nỉ nam Allcen - Đen, 32</a>	
+                  <a href="">{{x|nameproduct}}</a>	
 		</td>					</td>
                 <td class="product-price" data-title="Giá">
-                      <span class="woocommerce-Price-amount amount"><bdi>0<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>						</td>
+                      <span class="woocommerce-Price-amount amount"><bdi>{{x|priceproduct}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>						</td>
 		</td>
                 <td class="product-quantity" data-title="">
                       <div class="quantity">
@@ -41,10 +42,9 @@
                 </td>
                   <td class="product-subtotal" data-title="Tạm tính">
                       <span class="Mobi"> 
-                      <span class="woocommerce-Price-amount amount"><bdi>480.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span> x 
-                      1							</span>
+                      <span class="woocommerce-Price-amount amount"><bdi>{{x|priceproduct}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span> x {{x.quatity}}							</span>
                       <strong>
-                      <span class="woocommerce-Price-amount amount"><bdi>480.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>							</strong>
+                      <span class="woocommerce-Price-amount amount"><bdi>{{x|totalprice}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>							</strong>
                   </td>
               </tr>
 	      {%endfor%}
