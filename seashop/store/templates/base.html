@@ -11,7 +11,9 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
       <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0" nonce="qBXndxe2"></script>
-  </head>
+  
+  
+    </head>
   <body>
     <div id="fb-root"></div>
     <div id="topbar">
@@ -42,7 +44,6 @@
               </form>
           </div>
         </div>
-
         <div class="header-wrap-icon">
           <a {%if user%}href="customer"{%else%}href="login"{%endif%}>
             <span class="account-menu icon-account" aria-hidden="true" title="Tài Khoản">
@@ -66,7 +67,7 @@
                   <path d="M12,2c3,0,3,2.3,3,4h2c0-2.8-1-6-5-6S7,3.2,7,6h2C9,4.3,9,2,12,2z" />
                 </g>
               </svg>
-              <span class="count-holder"><span class="count">0</span></span>
+              <span class="count-holder"><span class="count">{{count}}</span></span>
             </span>
            </a>
           </span>    

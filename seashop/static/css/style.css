@@ -1,6 +1,6 @@
 html::-webkit-scrollbar {
   display: block;
-  
+ 
 }
 html::-webkit-scrollbar-thumb{
   border-radius: 10px;
@@ -130,7 +130,6 @@ form.searchform input.searchinput {
   margin: 0;
   display: inline-block;
   border-radius: 0;
-  -webkit-appearance: none;
   transition: all 150ms linear;
   
   
@@ -147,7 +146,6 @@ input {
   text-shadow: none;
   display: inline-block;
   text-align: start;
-  appearance: auto;
   -webkit-rtl-ordering: logical;
   cursor: text;
   background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
