@@ -13,7 +13,6 @@ def index(request):
     cat = category.get_categories()
     category_name = request.GET.get('category')
     category_detail = request.GET.get('categorydetail')
-
     if category_name:
         prt = Productdetail.get_product_by_category_name(category_name)
     if category_detail:
@@ -24,11 +23,14 @@ def index(request):
     else:
         prt = Product.get_all_products()
     user = request.session.get('customer_id')
-    
+
     if user:
         cart = request.session.get('cart')
+        if  not cart:
+            cart=[]
         if not cart:
             request.session['cart'] = []
+ 
     else:
         cart=[]
     

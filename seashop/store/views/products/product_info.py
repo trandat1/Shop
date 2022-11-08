@@ -54,5 +54,4 @@ class cart(View):
             cart__['quatity'] = q
             cart_.append(cart__)
         request.session['cart'] = cart_
-        print(request.session['cart'])
         return HttpResponseRedirect(reverse('index'))

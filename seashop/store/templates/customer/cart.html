@@ -1,4 +1,4 @@
-{%extends 'base.html'%}{%block content %}
+{%extends 'base.html'%}{%block content %}{%load static%}
 <div class="content-page">
     <div class="woocommerce">
       <form class="woocommerce-cart-form" method="post">
@@ -20,27 +20,25 @@
             </tr>                 
           </thead>
           <tbody>
+	{%for x in cart%}
             <tr class="woocommerce-cart-form__cart-item cart_item">
-
               <td class="product-remove">
                 <a href="" class="remove">x</a>						
               </td>
-
-                  <td class="product-thumbnail">
-                  <a href=""><img width="600" height="600" src="ALECN205-6-400x600.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" sizes="(max-width: 600px) 100vw, 600px" /></a>						</td>
-
-                  <td class="product-name" >
-                  <a href="">Áo nỉ nam Allcen - Đen, 32</a>						</td>
-
-                  <td class="product-price" data-title="Giá">
+                <td class="product-thumbnail">
+                  <a href="">
+			<img width="600" height="600" src="static/uploads/ALECN205-6-400x600.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" sizes="(max-width: 600px) 100vw, 600px" /></a>
+		</td>
+                <td class="product-name" >
+                  <a href="">Áo nỉ nam Allcen - Đen, 32</a>	
+		</td>					</td>
+                <td class="product-price" data-title="Giá">
                       <span class="woocommerce-Price-amount amount"><bdi>480.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>						</td>
-
-                  <td class="product-quantity" data-title="">
+		</td>
+                <td class="product-quantity" data-title="">
                       <div class="quantity">
-  <input type="number" value="1" min="0">
-      </div>
-                      </td>
-
+ 		      <input type="number" value="{{x.quatity}}" min="0">
+                </td>
                   <td class="product-subtotal" data-title="Tạm tính">
                       <span class="Mobi"> 
                       <span class="woocommerce-Price-amount amount"><bdi>480.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span> x 
@@ -49,18 +47,13 @@
                       <span class="woocommerce-Price-amount amount"><bdi>480.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>							</strong>
                   </td>
               </tr>
-              
-      
-      <tr>
+	      {%endfor%}
+ 
           <td colspan="6" class="actions">
-
-                                      <div class="coupon">
-                      <label for="coupon_code">Ưu đãi:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi" /> <button type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
-                                              </div>
-              
+                <div class="coupon">
+                 <label for="coupon_code">Ưu đãi:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi" /> <button type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
+                </div>
               <button type="submit" class="bigbutton" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
-
-              
               <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="3d93614aa1" /><input type="hidden" name="_wp_http_referer" value="/gio-hang/" />				</td>
       </tr>
           </tbody>
