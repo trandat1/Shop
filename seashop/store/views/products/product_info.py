@@ -11,7 +11,6 @@ class cart(View):
         # request.session.clear()
         prt = Product.get_product_by_name(name)
         pro = Productdetail. get_size_product(name)
-
         user = request.session.get('customer_id')
         if not user:
             user = None

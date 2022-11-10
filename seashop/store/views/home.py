@@ -10,12 +10,11 @@ from django.urls import reverse
 
 def index(request):
     template = loader.get_template('index.html')
-    cat = category.get_categories()
     category_name = request.GET.get('category')
     category_detail = request.GET.get('categorydetail')
     if category_name:
         prt = Productdetail.get_product_by_category_name(category_name)
-    if category_detail:
+    elif category_detail:
         prt = categorydetail.get_product_by_categorydetail_name(
             category_detail)
         if not prt:
@@ -24,23 +23,21 @@ def index(request):
         prt = Product.get_all_products()
     user = request.session.get('customer_id')
 
-    if user:
-        cart = request.session.get('cart')
-        if  not cart:
-            cart=[]
-        if not cart:
-            request.session['cart'] = []
- 
-    else:
-        cart=[]
-    
+    # if user:
+    cart = request.session.get('cart')
+    print(cart)
+    #     if not cart:
+    #         cart = []
+    #         request.session['cart'] = []
+
+    # else:
+    #     cart = []
+
     if not user:
         user = None
     context = {
         'user': user,
-        'cat': cat,
         'prt': prt,
-        'category': category_name,
         'count': len(cart)
     }
 

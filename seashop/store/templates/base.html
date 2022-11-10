@@ -55,7 +55,7 @@
             </span>
           </a>
           <span id="site-cart-handle" class="icon-cart" aria-label="Open cart" title="Giỏ hàng">
-           <a href="cart">
+           <a {%if user%}href="cart"{%else%}href="login"{%endif%}>
             <span class="cart-menu" aria-hidden="true">
               <svg version="1.1" class="svg-cart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
                 <g>
@@ -78,16 +78,16 @@
         <button class="dropbtn"><a href="">Sản Phẩm</a>
           <i class="fa fa-caret-down"></i>
         </button>
-      
+     
         <div class="dropdown-content">
          
           <div class="row">
             <div class="column">
               <h3><a href="/?category=Ao Nam">Áo Nam</a></h3>
-              <a href="/?categorydetail=Ao PoLo">Áo Polo</a>
+              <a href="/?categorydetail=Ao Polo">Áo Polo</a>
               <a href="/?categorydetail=Ao Phong">Áo Phông</a>
               <a href="/?categorydetail=Ao So Mi Dai Tay">Áo SƠ Mi Dài Tay</a>
-              <a href="/?categorydetail=Ao Sơ Mi Ngan Tay">Áo Sơ Mi Ngắn Tay</a>
+              <a href="/?categorydetail=Ao So Mi Ngan Tay">Áo Sơ Mi Ngắn Tay</a>
               <a href="/?categorydetail=Ao Ni">Nỉ</a>
               <a href="/?categorydetail=Ao Khoac">Khoác</a>
               <a href="/?categorydetail=Ao Vest">Áo Vest</a>
@@ -109,7 +109,7 @@
               <a href="/?categorydetail=Vi">Ví Da</a>
             </div>
             <div class="column">
-              <h3><a href="/?category=Giay Rep">Giày Rép Nam</a></h3>
+              <h3><a href="/?category=Giay Rep Nam">Giày Rép Nam</a></h3>
               <a href="/?categorydetail=Giay">Giày</a>
             </div>
           </div>
@@ -443,6 +443,30 @@ function setInputFilter(textbox, inputFilter) {
 setInputFilter(document.getElementById("intTextBox"), function(value) {
   return /^\d*$/.test(value); });
     </script>
+        <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var inputs = document.getElementsByClassName('input-number-wrapper')
     
+    function incInputNumber(input, step) {
+        var val = +input.value
+        if (isNaN(val)) val = 0
+        val += step
+        input.value = val > 0 ? val: 0
+        // If you need to change the input value in the DOM :
+        // var newValue = val > 0 ? val : 0;
+        // input.setAttribute("value", newValue);
+    }
+    
+    Array.prototype.forEach.call(inputs, function(el) {
+        var input = el.getElementsByTagName('input')[0]
+        
+        el.getElementsByClassName('increase')[0].addEventListener('click', function() { incInputNumber(input, 1) })
+        el.getElementsByClassName('decrease')[0].addEventListener('click', function() { incInputNumber(input, -1) })
+    })
+    })
+    
+    $( "#spinner" ).spinner();
+    </script>
+   
   </body>
 </html>
