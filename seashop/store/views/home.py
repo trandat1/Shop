@@ -1,10 +1,8 @@
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
-from store.models.products.categories import category
 from store.models.products.productdetail import Productdetail
 from store.models.products.categoriedetail import categorydetail
 from store.models.products.product import Product
-from store.models.products.categorize import Categorize
 from django.urls import reverse
 
 
@@ -25,7 +23,7 @@ def index(request):
 
     # if user:
     cart = request.session.get('cart')
-    print(cart)
+    # print(cart)
     #     if not cart:
     #         cart = []
     #         request.session['cart'] = []

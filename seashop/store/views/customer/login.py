@@ -11,9 +11,11 @@ import hashlib
 class Login(View):
     def get(self, request):
         template = loader.get_template('customer/login.html')
-        cat = category.get_all_categories()
+        user = request.session.get('customerName')
+        cart = request.session.get('cart')
         context = {
-            'cat': cat,
+            'user': user,
+            'count': len(cart)
         }
 
         return HttpResponse(template.render(context, request))
@@ -29,9 +31,11 @@ class Login(View):
             return HttpResponseRedirect(reverse('index'))
 
         else:
-            template = loader.get_template('customer/login.html')
-            cat = category.get_all_categories()
-            context = {
-                'cat': cat,
-            }
-            return HttpResponse(template.render(context, request))
+            # template = loader.get_template('customer/login.html')
+            # user = request.session.get('customerName')
+            # cart = request.session.get('cart')
+            # context = {
+            #     'user': user,
+            #     'count': len(cart)
+            # }
+            return HttpResponseRedirect(reverse('login'))

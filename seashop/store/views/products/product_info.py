@@ -8,6 +8,7 @@ from django.views import View
 
 class cart(View):
     def get(self, request, name):
+        cart = request.session.get('cart')
         # request.session.clear()
         prt = Product.get_product_by_name(name)
         pro = Productdetail. get_size_product(name)
@@ -19,7 +20,8 @@ class cart(View):
         context = {
             'prt': prt,
             'pro': pro,
-            'user': user
+            'user': user,
+            'count': len(cart)
         }
         return HttpResponse(template.render(context, request))
 
