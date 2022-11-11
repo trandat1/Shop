@@ -3,10 +3,6 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from store.models.customer.customers import Customer
-from store.models.products.categories import category
-
-import hashlib
-
 
 class Login(View):
     def get(self, request):
@@ -31,11 +27,4 @@ class Login(View):
             return HttpResponseRedirect(reverse('index'))
 
         else:
-            # template = loader.get_template('customer/login.html')
-            # user = request.session.get('customerName')
-            # cart = request.session.get('cart')
-            # context = {
-            #     'user': user,
-            #     'count': len(cart)
-            # }
             return HttpResponseRedirect(reverse('login'))

@@ -11,5 +11,6 @@ class Cart(View):
         print(cart)
         context = {
             'cart': cart,
+            'count': len(cart)
         }
         return HttpResponse(template.render(context, request))

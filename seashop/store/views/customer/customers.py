@@ -1,7 +1,7 @@
 from django.template import loader
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
-from django.views import View
+
 from store.models.products.categories import category
 
 
@@ -28,4 +28,6 @@ class page_customer():
         request.session['Username'] = None
         request.session['customer_id'] = None
         request.session['cart']=[]
+        
         return HttpResponseRedirect(reverse('customer'))
+       

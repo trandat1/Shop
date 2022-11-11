@@ -67,11 +67,11 @@
           <table cellspacing="0" class="shop_table shop_table_responsive">
               <tr class="cart-subtotal">
                   <th>Tạm tính</th>
-                  <td data-title="Tạm tính"><span class="woocommerce-Price-amount amount"><bdi>480.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></td>
+                  <td data-title="Tạm tính"><span class="woocommerce-Price-amount amount"><bdi>{{cart|total}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></td>
               </tr>
               <tr class="order-total">
                   <th>Tổng</th>
-                  <td data-title="Tổng"><strong><span class="woocommerce-Price-amount amount"><bdi>480.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></strong> </td>
+                  <td data-title="Tổng"><strong><span class="woocommerce-Price-amount amount"><bdi>{{cart|total}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></strong> </td>
               </tr>
           </table>
           <div class="wc-proceed-to-checkout"> 
@@ -85,7 +85,7 @@
    			 padding: 0 !Important;
    			 text-align: center;
    			 width: 100%;
-}
+
 ">
           Tiến hành thanh toán</a>
           </div>
@@ -93,7 +93,7 @@
       </div>
     </div>
   </div>  
-  
+ 
 </div>
 </div>
 {% endblock %}
