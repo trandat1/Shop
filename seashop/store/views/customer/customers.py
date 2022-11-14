@@ -1,7 +1,7 @@
 from django.template import loader
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
-
+from store.models.customer.cart import  Cart
 from store.models.products.categories import category
 
 
@@ -27,7 +27,8 @@ class page_customer():
     def logout(request):
         request.session['Username'] = None
         request.session['customer_id'] = None
-        request.session['cart']=[]
-        
+        cart= request.session.get('cart')
+        Cart.set_cart(cart)
+        request.session['cart']=[]    
         return HttpResponseRedirect(reverse('customer'))
-       
+        

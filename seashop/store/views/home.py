@@ -23,6 +23,9 @@ def index(request):
 
     # if user:
     cart = request.session.get('cart')
+    if not cart:
+        request.session['cart']=[]
+        cart=[]
     # print(cart)
     #     if not cart:
     #         cart = []

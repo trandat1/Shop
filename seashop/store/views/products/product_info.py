@@ -44,12 +44,14 @@ class cart(View):
                     if x.get('product') == products and x.get('size') == s:
                         x['quatity'] = x.get('quatity') + q
             else:
+                cart__['customer']=request.session['customer_id']
                 cart__['product'] = products
                 cart__['size'] = s
                 cart__['quatity'] = q
                 cart_.append(cart__)
         else:
             cart_ = []
+            cart__['customer']=request.session['customer_id']
             cart__['product'] = products
             cart__['size'] = s
             cart__['quatity'] = q

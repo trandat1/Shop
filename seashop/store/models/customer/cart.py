@@ -2,17 +2,33 @@ from django.db import models
 from .customers import Customer
 from store.models.products.product import Product
 
+
 class Cart(models.Model):
-        customer=models.ForeignKey(Customer,on_delete=models.CASCADE)
-        product= models.ForeignKey(Product,on_delete=models.CASCADE)
-        size=models.CharField(max_length=10)
-        amount=models.IntegerField
-        
-        
-        
-        
-        def get_cart(request):
-                cart_=request.GET.get('cart')
-                for x in cart_:
-                        cart=Cart(customer=request.get('customer'),product=x.get('product'),size=x.get('size'),amount=x.get('quatity'))
-                        cart.save()
+    customer = models.CharField(max_length=255)
+    product = models.CharField(max_length=255)
+    size = models.CharField(max_length=10)
+    amount = models.IntegerField(default=999)
+
+    @staticmethod
+    def set_cart(cart):
+        cart_ = cart
+        for x in cart_:
+            cart = Cart(customer=x.get('customer'), product=x.get(
+                'product'), size=x.get('size'), amount=x.get('quatity'))
+            cart.save()
+
+    @staticmethod
+    def get_cart_by_cusId(id):
+        cart = Cart.objects.all().filter(customer=id)
+        cart_ = []
+        for x in cart:
+            cart__ = {}
+            cart__['customer'] = x.customer
+            cart__['product'] = x.product
+            cart__['size'] = x.size
+            cart__['quatity'] = x.amount
+            cart_.append(cart__)
+        return cart_
+    # @staticmethod
+    # def get_cart_by_login():
+    #     return
