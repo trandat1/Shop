@@ -1,8 +1,49 @@
 {%extends 'base.html'%}{%block content %}{%load static%}
 {%load cart%}
+<style>
+  button.remove{
+  background-color: white;
+  border: 0px;
+  box-shadow: 0px 1px 1px #fff inset;
+  border-radius:75%;
+}
+
+button.remove:hover{
+  background-color: #d63031;
+  color: #fff;
+}
+a.checkout-button.button.alt.wc-forward{
+   			background-color: #000 !Important;
+    		border-radius: 0 !Important;
+    		color: #fff !Important;
+   			height: 45px;
+    		line-height: 45px !Important;
+   			margin-bottom: 10px !Important;
+   			padding: 0 !Important;
+   			text-align: center;
+   			width: 100%;
+}
+button.update:hover{
+  cursor: pointer;
+  background-color:#000;
+  color: #fff !Important;
+}
+button.button:hover{
+  cursor: pointer;
+  background-color:#000;
+  color: #fff !Important;
+}
+</style>
 <div class="content-page">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5 blog-breadcrumb">
+                		<ol class="breadcrumb breadcrumb-arrows">
+					<li><a href="">Trang chủ</a></li> / <li>Giỏ Hàng</li></nav>	
+               			</ol>
+	</div>
+
     <div class="woocommerce">
-      <form class="woocommerce-cart-form" method="post">
+      <form class="woocommerce-cart-form" method="post" action="?/">
+        {%csrf_token%}
         <table class="shop_table shop_table_responsive cart woocommerce-cart-form_contents" cellspacing="0">
           <thead>
             <tr>
@@ -21,24 +62,30 @@
             </tr>                 
           </thead>
           <tbody>
+                <form>        
+                </form>
 	{%for x in cart%}
             <tr class="woocommerce-cart-form__cart-item cart_item">
               <td class="product-remove">
-                <a href="" class="remove">x</a>						
+                <form method="post" action="remove">
+                  {%csrf_token %}
+                  <input type="hidden" value="{{x.product}}" name="product" >
+                  <button class="remove" >x</button>
+                </form>
               </td>
-                <td class="product-thumbnail">
+              <td class="product-thumbnail">
                   <a href="">
-			<img width="600" height="600" src="{{x|imgproduct}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" sizes="(max-width: 600px) 100vw, 600px" /></a>
-		</td>
+			            <img width="600" height="600" src="{{x|imgproduct}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" sizes="(max-width: 600px) 100vw, 600px" /></a>
+		          </td>
                 <td class="product-name" >
                   <a href="">{{x|nameproduct}}</a>	
-		</td>					</td>
+		          </td>				
                 <td class="product-price" data-title="Giá">
                       <span class="woocommerce-Price-amount amount"><bdi>{{x|priceproduct}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>						</td>
-		</td>
+		            </td>
                 <td class="product-quantity" data-title="">
                       <div class="quantity">
- 		      <input type="number" value="{{x.quatity}}" min="0">
+ 		                  <input name="quatity{{x.product}}" type="number" value="{{x.quatity}}" min="0">
                 </td>
                   <td class="product-subtotal" data-title="Tạm tính">
                       <span class="Mobi"> 
@@ -51,11 +98,12 @@
  
           <td colspan="6" class="actions">
                 <div class="coupon">
-                 <label for="coupon_code">Ưu đãi:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi" /> <button type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
+                 <label for="coupon_code">Ưu đãi:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi" /> 
+                 <button  type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
                 </div>
-              <button type="submit" class="bigbutton" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
+              <button class="update" type="submit" class="bigbutton" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
               <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="3d93614aa1" /><input type="hidden" name="_wp_http_referer" value="/gio-hang/" />				</td>
-      </tr>
+
           </tbody>
         </table>
       </form>
@@ -75,18 +123,8 @@
               </tr>
           </table>
           <div class="wc-proceed-to-checkout"> 
-      		<a href="#" class="checkout-button button alt wc-forward" style="
-   			 background-color: #000 !Important;
-    			 border-radius: 0 !Important;
-    			 color: #fff !Important;
-   			 height: 45px;
-    			 line-height: 45px !Important;
-   			 margin-bottom: 10px !Important;
-   			 padding: 0 !Important;
-   			 text-align: center;
-   			 width: 100%;
-
-">
+      		<a href="#" class="checkout-button button alt wc-forward"
+   		>
           Tiến hành thanh toán</a>
           </div>
       </div>

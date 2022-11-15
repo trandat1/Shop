@@ -28,7 +28,6 @@ class Login(View):
             request.session['Username'] = cus.Username
             cart=Cart.get_cart_by_cusId(cus.id)
             request.session['cart'] = cart
-
             return HttpResponseRedirect(reverse('index'))
 
         else:

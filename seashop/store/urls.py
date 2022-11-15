@@ -11,7 +11,8 @@ urlpatterns = [
     path('login', Login.as_view(), name='login'),
     path('register', Register.as_view(), name='register'),
     path('customer', page_customer.index, name='customer'),
-    path('logout',page_customer.logout, name='logout'),
-    path('product=<str:name>',cart.as_view(), name='info'),
-    path('cart',Cart.as_view(), name='cart'),
+    path('logout', page_customer.logout, name='logout'),
+    path('product=<str:name>', cart.as_view(), name='info'),
+    path('cart', Cart.as_view(), name='cart'),
+    path('remove', Cart.remove, name='remove'),
 ]

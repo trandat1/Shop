@@ -45,7 +45,7 @@
       <figcaption>
         <div><a href="product={{x.id}}">{{x.name}}</a></div>
         <br />
-        <div class="price">{{x.price}}</div>
+        <div class="price">{{x.price|price}}</div>
       </figcaption>
     </div>
     {%endfor%} 
@@ -63,7 +63,7 @@
       <figcaption>
         <div><a href="product={{x.id}}">{{x.name}}</a></div>
         <br />
-        <div class="price">{{x.price}}</div>
+        <div class="price">{{x.price|price}}</div>
       </figcaption>
     </div>
     {%endfor%}

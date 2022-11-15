@@ -29,6 +29,12 @@ class Cart(models.Model):
             cart__['quatity'] = x.amount
             cart_.append(cart__)
         return cart_
+    
+    @staticmethod
+    def delete_cart_by_cusId(cusId):
+        cart=Cart.objects.all().filter(customer=cusId)
+        cart.delete()
+        
     # @staticmethod
     # def get_cart_by_login():
     #     return
