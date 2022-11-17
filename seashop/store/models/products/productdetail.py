@@ -17,10 +17,11 @@ class Productdetail(models.Model):
         product_detail = Productdetail.objects.all().filter(Category=category_.id)
         for x in product_detail:
             products.append(x.product)
+        products = set(products)
+        products = list(products)
         return products
 
     def get_size_product(name):
         product_ = Product.get_product_by_name(name)
         pro = Productdetail.objects.all().filter(product=product_.id)
         return pro
-        

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{%load static%}{%block content%}
+{% extends 'base.html' %}{%load product%}{%load static%}{%block content%}
 <div class="container-content">
   <div class="container-fluid">
     <div class="breadcrumb-shop">
@@ -63,7 +63,7 @@
           <div class="product-title">
             <h1>{{prt.name}}</h1>
           </div>
-          <div class="product-price">{{prt.price}}₫</div>
+          <div class="product-price">{{prt.price|price}}₫</div>
           <div class="product-size">
             <div>cỡ</div>
             <div class="choice-size">

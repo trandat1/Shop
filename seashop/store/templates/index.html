@@ -1,5 +1,4 @@
-{%extends 'base.html'%} {%block content %} {%load static%}
-{%load product%}
+{%extends 'base.html'%} {%block content %} {%load static%} {%load product%}
 <!-- /.container-->
 <div class="slideshow-container">
   <div class="mySlides">
@@ -33,24 +32,22 @@
   <h1><a href="">Sản Phẩm Bán Chạy</a></h1>
 </div>
 <div class="container-fluid">
-    {%for x in prt%}
-    {%if forloop.counter0|countprt%}
-      </div>
-      <div class="product-content"> 
- {%endif%} 
-    <div class="column">
-      <a href="product={{x.name}}"
-        ><img src="{{x.image}}" alt="Snow" style="width: 100%"
-      /></a>
-      <figcaption>
-        <div><a href="product={{x.id}}">{{x.name}}</a></div>
-        <br />
-        <div class="price">{{x.price|price}}</div>
-      </figcaption>
-    </div>
-    {%endfor%} 
+  {%for x in prt%} {%if forloop.counter0|countprt%}
+</div>
+<div class="product-content">
+  {%endif%}
+  <div class="column">
+    <a href="product={{x.name}}"
+      ><img src="{{x.image}}" alt="Snow" style="width: 100%"
+    /></a>
+    <figcaption>
+      <div><a href="product={{x.id}}">{{x.name}}</a></div>
+      <br />
+      <div class="price">{{x.price|price}}</div>
+    </figcaption>
   </div>
-
+  {%endfor%}
+</div>
 
 <div class="spbc">
   <h1><a href="">Hàng Mới Về</a></h1>

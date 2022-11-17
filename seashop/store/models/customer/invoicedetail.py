@@ -10,4 +10,4 @@ class Invoicedetail(models.Model):
         amount=models.IntegerField
         total=models.IntegerField
         
-        
+       

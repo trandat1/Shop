@@ -9,7 +9,7 @@ def countprt(count):
     if count % 4 == 0:
         return True
    
-   
+  
 @register.filter(name='price')
 def price(price):
     i=-1

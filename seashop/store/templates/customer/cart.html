@@ -1,137 +1,214 @@
-{%extends 'base.html'%}{%block content %}{%load static%}
-{%load cart%}
+{%extends 'base.html'%}{%block content %}{%load static%} {%load cart%}
 <style>
-  button.remove{
-  background-color: white;
-  border: 0px;
-  box-shadow: 0px 1px 1px #fff inset;
-  border-radius:75%;
-}
-
-button.remove:hover{
-  background-color: #d63031;
-  color: #fff;
-}
-a.checkout-button.button.alt.wc-forward{
-   			background-color: #000 !Important;
-    		border-radius: 0 !Important;
-    		color: #fff !Important;
-   			height: 45px;
-    		line-height: 45px !Important;
-   			margin-bottom: 10px !Important;
-   			padding: 0 !Important;
-   			text-align: center;
-   			width: 100%;
-}
-button.update:hover{
-  cursor: pointer;
-  background-color:#000;
-  color: #fff !Important;
-}
-button.button:hover{
-  cursor: pointer;
-  background-color:#000;
-  color: #fff !Important;
-}
+  button.remove {
+    background-color: white;
+    border: 0px;
+    box-shadow: 0px 1px 1px #fff inset;
+    border-radius: 75%;
+  }
+  button.remove:hover {
+    background-color: #d63031;
+    color: #fff;
+  }
+  a.checkout-button.button.alt.wc-forward {
+    background-color: #000 !important;
+    border-radius: 0 !important;
+    color: #fff !important;
+    height: 45px;
+    line-height: 45px !important;
+    margin-bottom: 10px !important;
+    padding: 0 !important;
+    text-align: center;
+    width: 100%;
+  }
+  button.update:hover {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff !important;
+  }
+  button.button:hover {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff !important;
+  }
 </style>
 <div class="content-page">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5 blog-breadcrumb">
-                		<ol class="breadcrumb breadcrumb-arrows">
-					<li><a href="">Trang chủ</a></li> / <li>Giỏ Hàng</li></nav>	
-               			</ol>
-	</div>
+    <ol class="breadcrumb breadcrumb-arrows">
+      <li><a href="">Trang chủ</a></li>
+      /
+      <li>Giỏ Hàng</li>
+    </ol>
+  </div>
+  <div class="woocommerce">
+    <form class="woocommerce-cart-form" method="post" action="?/">
+      {%csrf_token%}
+      <table
+        class="shop_table shop_table_responsive cart woocommerce-cart-form_contents"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th class="product_remove"></th>
+            <th class="product_thumbnail"></th>
+            <th class="product_name">Sản Phẩm</th>
+            <th class="product_price">Giá</th>
+            <th class="product_quantity">Số Lượng</th>
+            <th class="product_subtotal">Tạm Tính</th>
+          </tr>
+        </thead>
+        <tbody>
+          <form></form>
+          {%for x in cart%}
+          <tr class="woocommerce-cart-form__cart-item cart_item">
+            <td class="product-remove">
+              <form method="post" action="remove">
+                {%csrf_token %}
+                <input type="hidden" value="{{x.product}}" name="product" />
+                <button class="remove">x</button>
+              </form>
+            </td>
+            <td class="product-thumbnail">
+              <a href="">
+                <img
+                  width="600"
+                  height="600"
+                  src="{{x|imgproduct}}"
+                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                  alt=""
+                  loading="lazy"
+                  sizes="(max-width: 600px) 100vw, 600px"
+              /></a>
+            </td>
+            <td class="product-name">
+              <a href="">{{x|nameproduct}}</a>
+            </td>
+            <td class="product-price" data-title="Giá">
+              <span class="woocommerce-Price-amount amount"
+                ><bdi
+                  >{{x|priceproduct}}<span
+                    class="woocommerce-Price-currencySymbol"
+                    >&#8363;</span
+                  ></bdi
+                ></span
+              >
+            </td>
 
-    <div class="woocommerce">
-      <form class="woocommerce-cart-form" method="post" action="?/">
-        {%csrf_token%}
-        <table class="shop_table shop_table_responsive cart woocommerce-cart-form_contents" cellspacing="0">
-          <thead>
-            <tr>
-              <th class="product_remove">
-                </th>
-              <th class="product_thumbnail">
-                </th>
-              <th class="product_name">
-                Sản Phẩm</th>
-              <th class="product_price">
-                Giá</th>
-              <th class="product_quantity">
-                Số Lượng</th>
-              <th class="product_subtotal">
-                Tạm Tính</th>
-            </tr>                 
-          </thead>
-          <tbody>
-                <form>        
-                </form>
-	{%for x in cart%}
-            <tr class="woocommerce-cart-form__cart-item cart_item">
-              <td class="product-remove">
-                <form method="post" action="remove">
-                  {%csrf_token %}
-                  <input type="hidden" value="{{x.product}}" name="product" >
-                  <button class="remove" >x</button>
-                </form>
-              </td>
-              <td class="product-thumbnail">
-                  <a href="">
-			            <img width="600" height="600" src="{{x|imgproduct}}" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" sizes="(max-width: 600px) 100vw, 600px" /></a>
-		          </td>
-                <td class="product-name" >
-                  <a href="">{{x|nameproduct}}</a>	
-		          </td>				
-                <td class="product-price" data-title="Giá">
-                      <span class="woocommerce-Price-amount amount"><bdi>{{x|priceproduct}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>						</td>
-		            </td>
-                <td class="product-quantity" data-title="">
-                      <div class="quantity">
- 		                  <input name="quatity{{x.product}}" type="number" value="{{x.quatity}}" min="0">
-                </td>
-                  <td class="product-subtotal" data-title="Tạm tính">
-                      <span class="Mobi"> 
-                      <span class="woocommerce-Price-amount amount"><bdi>{{x|priceproduct}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span> x {{x.quatity}}							</span>
-                      <strong>
-                      <span class="woocommerce-Price-amount amount"><bdi>{{x|totalprice}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span>							</strong>
-                  </td>
-              </tr>
-	      {%endfor%}
- 
+            <td class="product-quantity" data-title="">
+              <div class="quantity">
+                <input
+                  name="quatity{{x.product}}"
+                  type="number"
+                  value="{{x.quatity}}"
+                  min="0"
+                />
+              </div>
+            </td>
+            <td class="product-subtotal" data-title="Tạm tính">
+              <span class="Mobi">
+                <span class="woocommerce-Price-amount amount"
+                  ><bdi
+                    >{{x|priceproduct}}<span
+                      class="woocommerce-Price-currencySymbol"
+                      >&#8363;</span
+                    ></bdi
+                  ></span
+                >
+                x {{x.quatity}}
+              </span>
+              <strong>
+                <span class="woocommerce-Price-amount amount"
+                  ><bdi
+                    >{{x|totalprice}}<span
+                      class="woocommerce-Price-currencySymbol"
+                      >&#8363;</span
+                    ></bdi
+                  ></span
+                >
+              </strong>
+            </td>
+          </tr>
+          {%endfor%}
           <td colspan="6" class="actions">
-                <div class="coupon">
-                 <label for="coupon_code">Ưu đãi:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi" /> 
-                 <button  type="submit" class="button" name="apply_coupon" value="Áp dụng">Áp dụng</button>
-                </div>
-              <button class="update" type="submit" class="bigbutton" name="update_cart" value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
-              <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="3d93614aa1" /><input type="hidden" name="_wp_http_referer" value="/gio-hang/" />				</td>
-
-          </tbody>
+            <div class="coupon">
+              <label for="coupon_code">Ưu đãi:</label>
+              <input
+                type="text"
+                name="coupon_code"
+                class="input-text"
+                id="coupon_code"
+                value=""
+                placeholder="Mã ưu đãi"
+              />
+              <button
+                type="submit"
+                class="button"
+                name="apply_coupon"
+                value="Áp dụng"
+              >
+                Áp dụng
+              </button>
+            </div>
+            <button
+              class="update"
+              type="submit"
+              class="bigbutton"
+              name="update_cart"
+              value="Cập nhật giỏ hàng"
+            >
+              Cập nhật giỏ hàng
+            </button>
+            <input
+              type="hidden"
+              id="woocommerce-cart-nonce"
+              name="woocommerce-cart-nonce"
+              value="3d93614aa1"
+            /><input type="hidden" name="_wp_http_referer" value="/gio-hang/" />
+          </td>
+        </tbody>
+      </table>
+    </form>
+    <p style="margin-top: -15px"></p>
+    <div class="cart-collaterals">
+      <div class="cart_totals" style="float: right">
+        <h2>Cộng giỏ hàng</h2>
+        <table cellspacing="0" class="shop_table shop_table_responsive">
+          <tr class="cart-subtotal">
+            <th>Tạm tính</th>
+            <td data-title="Tạm tính">
+              <span class="woocommerce-Price-amount amount"
+                ><bdi
+                  >{{cart|total}}<span class="woocommerce-Price-currencySymbol"
+                    >&#8363;</span
+                  ></bdi
+                ></span
+              >
+            </td>
+          </tr>
+          <tr class="order-total">
+            <th>Tổng</th>
+            <td data-title="Tổng">
+              <strong
+                ><span class="woocommerce-Price-amount amount"
+                  ><bdi
+                    >{{cart|total}}<span
+                      class="woocommerce-Price-currencySymbol"
+                      >&#8363;</span
+                    ></bdi
+                  ></span
+                ></strong
+              >
+            </td>
+          </tr>
         </table>
-      </form>
-      <p style="margin-top: -15px;">
-      </p>
-      <div class="cart-collaterals">
-          <div class="cart_totals"style="float: right">
-          <h2>Cộng giỏ hàng</h2>
-          <table cellspacing="0" class="shop_table shop_table_responsive">
-              <tr class="cart-subtotal">
-                  <th>Tạm tính</th>
-                  <td data-title="Tạm tính"><span class="woocommerce-Price-amount amount"><bdi>{{cart|total}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></td>
-              </tr>
-              <tr class="order-total">
-                  <th>Tổng</th>
-                  <td data-title="Tổng"><strong><span class="woocommerce-Price-amount amount"><bdi>{{cart|total}}<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></strong> </td>
-              </tr>
-          </table>
-          <div class="wc-proceed-to-checkout"> 
-      		<a href="#" class="checkout-button button alt wc-forward"
-   		>
-          Tiến hành thanh toán</a>
-          </div>
-      </div>
+        <div class="wc-proceed-to-checkout">
+          <a href="pay" class="checkout-button button alt wc-forward">
+            Tiến hành thanh toán</a
+          >
+        </div>
       </div>
     </div>
-  </div>  
- 
+  </div>
 </div>
-</div>
+
 {% endblock %}

@@ -9,7 +9,12 @@ class Size(models.Model):
         ('L', 'L'),
         ('XL', 'XL'),
         ('XXL', 'XXL'),
+        ('33','33'),
+        ('32','32'),
+        ('30','30'),
+        ('31','31')
     ]
+    
     size = models.CharField(max_length=10, choices=size, default="S")
 
     def __str__(self):

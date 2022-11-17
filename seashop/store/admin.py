@@ -5,7 +5,7 @@ from .models.products.sizes import Size
 from .models.products.productdetail import Productdetail
 from .models.products.categoriedetail import categorydetail
 from .models.products.categorize import Categorize
-
+from .models.customer.invoices import Invoice
 class Products(admin.ModelAdmin):
     list_display = ['name', 'price', 'description']
 

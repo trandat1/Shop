@@ -6,7 +6,7 @@ class Customer(models.Model):
     Username = models.CharField(max_length=255)
     email = models.CharField(max_length=25)
     password = models.CharField(max_length=255)
-
+    phone=models.CharField(max_length=11,default='')
     @staticmethod
     def set_customer(username, email, password):
         cus = Customer(Username=username, email=email,password=hashlib.md5(password.encode()).hexdigest())

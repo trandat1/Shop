@@ -5,6 +5,7 @@ from .views.customer.register import Register
 from .views.customer.customers import page_customer
 from .views.products.product_info import cart
 from .views.customer.cart import Cart
+from .views.customer.pay import Pay
 
 urlpatterns = [
     path('', home.index, name='index'),
@@ -15,4 +16,6 @@ urlpatterns = [
     path('product=<str:name>', cart.as_view(), name='info'),
     path('cart', Cart.as_view(), name='cart'),
     path('remove', Cart.remove, name='remove'),
+    path('pay',Pay.as_view(), name='pay'),
+
 ]
