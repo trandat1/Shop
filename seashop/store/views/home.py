@@ -9,8 +9,13 @@ from django.urls import reverse
 def index(request):
     template = loader.get_template('index.html')
     category_name = request.GET.get('category')
+    search = request.GET.get('s')
     category_detail = request.GET.get('categorydetail')
-    if category_name:
+
+    if search:
+        prt=Product.get_product_by_search(search)
+    
+    elif category_name:
         prt = Productdetail.get_product_by_category_name(category_name)
     elif category_detail:
         prt = categorydetail.get_product_by_categorydetail_name(
@@ -24,15 +29,8 @@ def index(request):
     # if user:
     cart = request.session.get('cart')
     if not cart:
-        request.session['cart']=[]
-        cart=[]
-    # print(cart)
-    #     if not cart:
-    #         cart = []
-    #         request.session['cart'] = []
-
-    # else:
-    #     cart = []
+        request.session['cart'] = []
+        cart = []
 
     if not user:
         user = None

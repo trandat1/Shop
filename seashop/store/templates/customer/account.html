@@ -1,0 +1,211 @@
+{%extends 'base.html'%}{%load static%}{%block content %}
+<div id="article">
+  <div class="container-fluid">
+    <div class="row breadcrumb-shop">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5 blog-breadcrumb">
+        <ol class="breadcrumb breadcrumb-arrows">
+          <li><a href="https://360boutique.vn">Trang chủ</a></li>
+          /
+          <li><a href="https://360boutique.vn/tai-khoan/">Tài khoản</a></li>
+          /
+          <li>Tài khoản</li>
+        </ol>
+      </div>
+    </div>
+    <br />
+    <div class="content-page">
+      <div class="woocommerce">
+        <nav class="woocommerce-MyAccount-navigation">
+          <ul>
+            <li
+              class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard"
+            >
+              <a href="customer">Trang tài khoản</a>
+            </li>
+            <li
+              class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders"
+            >
+              <a href="/">Đơn hàng</a>
+            </li>
+            <li
+              class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--downloads"
+            >
+              <a href="/"
+                >Tải xuống</a
+              >
+            </li>
+            <li
+              class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address"
+            >
+              <a href="/"
+                >Địa chỉ</a
+              >
+            </li>
+            <li
+              class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account is-active"
+            >
+              <a href="account"
+                >Tài khoản</a
+              >
+            </li>
+            <li
+              class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout"
+            >
+              <a
+                href="logout"
+                >Thoát</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <div class="woocommerce-MyAccount-content">
+          <div class="woocommerce-notices-wrapper"></div>
+          <form
+            class="woocommerce-EditAccountForm edit-account"
+            action=""
+            method="post"
+          >
+            <p
+              class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first"
+            >
+              <label for="account_first_name"
+                >Tên&nbsp;<span class="required">*</span></label
+              >
+              <input
+                type="text"
+                class="woocommerce-Input woocommerce-Input--text input-text"
+                name="account_first_name"
+                id="account_first_name"
+                autocomplete="given-name"
+                value=""
+              />
+            </p>
+            <p
+              class="woocommerce-form-row woocommerce-form-row--last form-row form-row-last"
+            >
+              <label for="account_last_name"
+                >Họ&nbsp;<span class="required">*</span></label
+              >
+              <input
+                type="text"
+                class="woocommerce-Input woocommerce-Input--text input-text"
+                name="account_last_name"
+                id="account_last_name"
+                autocomplete="family-name"
+                value=""
+              />
+            </p>
+            <div class="clear"></div>
+
+            <p
+              class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
+            >
+              <label for="account_display_name"
+                >Tên hiển thị&nbsp;<span class="required">*</span></label
+              >
+              <input
+                type="text"
+                class="woocommerce-Input woocommerce-Input--text input-text"
+                name="account_display_name"
+                id="account_display_name"
+                value="giavien2002"
+              />
+              <span
+                ><em
+                  >Tên này sẽ hiển thị trong trang Tài khoản và phần Đánh giá
+                  sản phẩm</em
+                ></span
+              >
+            </p>
+            <div class="clear"></div>
+
+            <p
+              class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
+            >
+              <label for="account_email"
+                >Địa chỉ email&nbsp;<span class="required">*</span></label
+              >
+              <input
+                type="email"
+                class="woocommerce-Input woocommerce-Input--email input-text"
+                name="account_email"
+                id="account_email"
+                autocomplete="email"
+                value="GiaVien2002@gmail.com"
+              />
+            </p>
+
+            <fieldset>
+              <legend>Thay đổi mật khẩu</legend>
+
+              <p
+                class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
+              >
+                <label for="password_current"
+                  >Mật khẩu hiện tại (bỏ trống nếu không đổi)</label
+                >
+                <input
+                  type="password"
+                  class="woocommerce-Input woocommerce-Input--password input-text"
+                  name="password_current"
+                  id="password_current"
+                  autocomplete="off"
+                />
+              </p>
+              <p
+                class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
+              >
+                <label for="password_1"
+                  >Mật khẩu mới (bỏ trống nếu không đổi)</label
+                >
+                <input
+                  type="password"
+                  class="woocommerce-Input woocommerce-Input--password input-text"
+                  name="password_1"
+                  id="password_1"
+                  autocomplete="off"
+                />
+              </p>
+              <p
+                class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide"
+              >
+                <label for="password_2">Xác nhận mật khẩu mới</label>
+                <input
+                  type="password"
+                  class="woocommerce-Input woocommerce-Input--password input-text"
+                  name="password_2"
+                  id="password_2"
+                  autocomplete="off"
+                />
+              </p>
+            </fieldset>
+            <div class="clear"></div>
+
+            <p>
+              <input
+                type="hidden"
+                id="save-account-details-nonce"
+                name="save-account-details-nonce"
+                value="1df3bbbd85"
+              /><input
+                type="hidden"
+                name="_wp_http_referer"
+                value="/tai-khoan/edit-account/"
+              />
+              <button
+                type="submit"
+                class="woocommerce-Button button"
+                name="save_account_details"
+                value="Lưu thay đổi"
+              >
+                Lưu thay đổi
+              </button>
+              <input type="hidden" name="action" value="save_account_details" />
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,5 +14,6 @@ class category(models.Model):
         return category.objects.all()
 
     def get_categoriesid_by_name(category_name):
-        return category.objects.all().get(name=category_name)
+        if category.objects.all().filter(name=category_name):
+            return category.objects.all().get(name=category_name)
 

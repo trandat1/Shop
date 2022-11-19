@@ -19,7 +19,14 @@ class Product(models.Model):
         return Product.objects.all().values()
 
     def get_product_by_name(name):
-        return Product.objects.all().get(name=name)
+        return Product.objects.all().filter(name=name)
 
     def get_product_by_id(id):
         return Product.objects.all().get(id=id)
+
+    @staticmethod
+    def get_product_by_search(s):
+        if Product.objects.all().filter(name__icontains=s):
+            return Product.objects.all().filter(name__icontains=s)
+        else:
+            return None
