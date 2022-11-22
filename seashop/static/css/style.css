@@ -1,6 +1,12 @@
 html::-webkit-scrollbar {
   display: block;
 }
+h1, h2, h3, h4, h5, h6 {
+    color: #252a2b;
+    margin: 0 0 13px 0;
+    font-weight: 500;
+    line-height: 1.2;
+}
 html::-webkit-scrollbar-thumb {
   border-radius: 10px;
   /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */

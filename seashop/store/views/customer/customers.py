@@ -27,10 +27,16 @@ class page_customer():
     def logout(request):
         cus = request.session['customer_id']
         cart = request.session.get('cart')
-        
+
         if cart != Cart.get_cart_by_cusId(cus):
             Cart.delete_cart_by_cusId(cus)
             Cart.set_cart(cart)
-        
         request.session.clear()
         return HttpResponseRedirect(reverse('customer'))
+
+
+
+   
+    def address(request):
+        template = loader.get_template('customer/address.html')
+        return HttpResponse(template.render())

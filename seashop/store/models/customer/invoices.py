@@ -35,3 +35,7 @@ class Invoice(models.Model):
                           address=address, province=province, city=city, date=date)
         invoice.save()
         return invoice
+
+    @staticmethod
+    def get_invoice(cus):
+        return Invoice.objects.filter(customer=cus)

@@ -34,7 +34,7 @@ class Cart(models.Model):
     def delete_cart_by_cusId(cusId):
         cart=Cart.objects.all().filter(customer=cusId)
         cart.delete()
-        
+       
     # @staticmethod
     # def get_cart_by_login():
     #     return

@@ -22,10 +22,11 @@ class Login(View):
         password = request.POST.get('password')
         cus = Customer.get_customer(u, password)
         
-        
+      
         if cus:
             request.session['customer_id'] = cus.id
             request.session['Username'] = cus.Username
+            request.session['Email'] = cus.email
             cart=Cart.get_cart_by_cusId(cus.id)
             request.session['cart'] = cart
             return HttpResponseRedirect(reverse('index'))

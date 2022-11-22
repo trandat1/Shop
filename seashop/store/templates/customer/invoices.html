@@ -1,0 +1,86 @@
+{%extends 'customer/basecus.html'%}{%load static%}{%block MyAccount_content %}
+
+<div class="woocommerce-MyAccount-content">
+  <div class="woocommerce-notices-wrapper"></div>
+
+  <table
+    class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table"
+  >
+    <thead>
+      <tr>
+        <th
+          class="woocommerce-orders-table__header woocommerce-orders-table__header-order-number"
+        >
+          <span class="nobr">Đơn hàng</span>
+        </th>
+        <th
+          class="woocommerce-orders-table__header woocommerce-orders-table__header-order-date"
+        >
+          <span class="nobr">Ngày</span>
+        </th>
+        <th
+          class="woocommerce-orders-table__header woocommerce-orders-table__header-order-status"
+        >
+          <span class="nobr">Tình trạng</span>
+        </th>
+        <th
+          class="woocommerce-orders-table__header woocommerce-orders-table__header-order-total"
+        >
+          <span class="nobr">Tổng</span>
+        </th>
+        <th
+          class="woocommerce-orders-table__header woocommerce-orders-table__header-order-actions"
+        >
+          <span class="nobr">Các thao tác</span>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        class="woocommerce-orders-table__row woocommerce-orders-table__row--status-cancelled order"
+      >
+        <td
+          class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number"
+        >
+          <a href="https://360boutique.vn/tai-khoan/view-order/53603/">
+            #53603
+          </a>
+        </td>
+        <td
+          class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date"
+        >
+          <time datetime="2022-11-17T13:08:27+00:00"
+            >17 Tháng Mười Một, 2022</time
+          >
+        </td>
+        <td
+          class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-status"
+        >
+          Đã hủy
+        </td>
+        <td
+          class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-total"
+        >
+          <span class="woocommerce-Price-amount amount"
+            >898.000<span class="woocommerce-Price-currencySymbol"
+              >₫</span
+            ></span
+          >
+          cho 2 mục
+        </td>
+        <td
+          class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions"
+        >
+          <a
+            href="https://360boutique.vn/tai-khoan/view-order/53603/"
+            class="woocommerce-button button view"
+            >Xem</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

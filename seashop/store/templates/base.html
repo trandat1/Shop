@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="header-wrap-icon">
-          <a {%if user%}href="customer"{%else%}href="login"{%endif%}>
+          <a {%if user%}href="customer/"{%else%}href="login"{%endif%}>
             <span class="account-menu icon-account" aria-hidden="true" title="Tài Khoản">
               <svg class="svg-account" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
                 <g><g id="account-circle">
@@ -333,7 +333,7 @@
               if (activeImages.length > 0){
                   activeImages[0].classList.remove('active')
               }
-              
+             
     
               this.classList.add('active')
               document.getElementById('featured').src = this.src

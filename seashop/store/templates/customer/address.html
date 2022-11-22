@@ -1,0 +1,47 @@
+{%extends 'customer/basecus.html'%}{%load static%}{%block MyAccount_content %}
+
+<div class="woocommerce-MyAccount-content">
+  <div class="woocommerce-notices-wrapper"></div>
+  <p>
+    Các địa chỉ bên dưới mặc định sẽ được sử dụng ở trang thanh toán sản phẩm.
+  </p>
+  <div class="u-columns woocommerce-Addresses col2-set addresses">
+    <div class="u-column1 col-1 woocommerce-Address">
+      <header class="woocommerce-Address-title title">
+        <div id="toc_container" class="no_bullets">
+          <p class="toc_title">
+            Nội dung trang
+            <span class="toc_toggle">[<a href="#">Ẩn</a>]</span>
+          </p>
+          <ul class="toc_list">
+            <li>
+              <a href="#Dia_chi_thanh_toan"
+                ><span class="toc_number toc_depth_1">1</span> Địa chỉ thanh
+                toán</a
+              >
+            </li>
+            <li>
+              <a href="#Dia_chi_giao_hang"
+                ><span class="toc_number toc_depth_1">2</span> Địa chỉ giao
+                hàng</a
+              >
+            </li>
+          </ul>
+        </div>
+        <h3><span id="Dia_chi_thanh_toan">Địa chỉ thanh toán</span></h3>
+        <a href="" class="edit">Thêm</a>
+      </header>
+      <address>Bạn vẫn chưa thêm địa chỉ nào.</address>
+    </div>
+
+    <div class="u-column2 col-2 woocommerce-Address">
+      <header class="woocommerce-Address-title title">
+        <h3><span id="Dia_chi_giao_hang">Địa chỉ giao hàng</span></h3>
+        <a href="" class="edit">Thêm</a>
+      </header>
+      <address>Bạn vẫn chưa thêm địa chỉ nào.</address>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

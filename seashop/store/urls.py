@@ -6,16 +6,20 @@ from .views.customer.customers import page_customer
 from .views.products.product_info import cart
 from .views.customer.cart import Cart
 from .views.customer.pay import Pay
-
+from .views.customer.my_account.update_account import Update_account
+from .views.customer.my_account.info_invoices import Info_invoices
 urlpatterns = [
     path('', home.index, name='index'),
     path('login', Login.as_view(), name='login'),
     path('register', Register.as_view(), name='register'),
-    path('customer', page_customer.index, name='customer'),
+    path('customer/', page_customer.index, name='customer'),
     path('logout', page_customer.logout, name='logout'),
     path('product=<str:name>', cart.as_view(), name='info'),
     path('cart', Cart.as_view(), name='cart'),
     path('remove', Cart.remove, name='remove'),
     path('pay',Pay.as_view(), name='pay'),
-
+    path('customer/Update_account',Update_account.as_view(), name='update_account'),
+    path('customer/invoice',Info_invoices.as_view(), name='invoice'),
+    path('customer/address',page_customer.address,name='address'),
+   
 ]
