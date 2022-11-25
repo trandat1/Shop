@@ -13,8 +13,9 @@ def index(request):
     category_detail = request.GET.get('categorydetail')
 
     if search:
-        prt=Product.get_product_by_search(search)
+        prt = Product.get_product_by_search(search)
     
+
     elif category_name:
         prt = Productdetail.get_product_by_category_name(category_name)
     elif category_detail:

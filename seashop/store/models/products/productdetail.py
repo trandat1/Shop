@@ -29,3 +29,14 @@ class Productdetail(models.Model):
     @staticmethod
     def get_product_by_id(id):
         return Productdetail.objects.all().get(id=id)
+
+    @staticmethod
+    def update_quatity(pr, size, quatity):
+        pr_ = Product.get_product_by_id(pr)
+        size_ = Size.get_size(size)
+        prt_ = Productdetail.objects.all().get(product=pr_, size=size_)
+        prt_.quantity = prt_.quantity-quatity
+        if prt_.quantity < 1:
+            pr_.status = 0
+            pr.save()
+        prt_.save()

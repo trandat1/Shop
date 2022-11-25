@@ -16,7 +16,7 @@ class Product(models.Model):
         return self.name
 
     def get_all_products():
-        return Product.objects.all().values()
+        return Product.objects.all().filter(status='success').values()
 
     def get_product_by_name(name):
         return Product.objects.all().get(name=name)
@@ -26,7 +26,7 @@ class Product(models.Model):
 
     @staticmethod
     def get_product_by_search(s):
-        if Product.objects.all().filter(name__icontains=s):
-            return Product.objects.all().filter(name__icontains=s)
+        if Product.objects.all().filter(name__icontains=s,status='success'):
+            return Product.objects.all().filter(name__icontains=s,status='success')
         else:
             return None

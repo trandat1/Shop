@@ -27,6 +27,7 @@ class Invoicedetail(models.Model):
             inv = Invoicedetail(invoice=invoice, product=prt_, amount=x.get(
                 'quatity'), total=prt_.price*x.get('quatity'),size=size)
             inv.save()
+            Productdetail.update_quatity(x.get('product'),x.get('size'),x.get('quatity'))
 
     @staticmethod
     def get_invoicedetail(cus):
@@ -42,10 +43,13 @@ class Invoicedetail(models.Model):
             invd_['invd_total'] = total.get('total__sum')
             invd__ = (Invoice.objects.annotate(
                 count=Count('invoicedetail')).filter(id=x.id))
-            invd_['count_product'] = invd__[0].count
+            amount = Invoicedetail.objects.all().filter(
+                invoice=x.id).aggregate(Sum('amount'))
+            invd_['count_product']=amount.get('amount__sum')
             invd_['invd_id'] = invd__[0].id
             invd.append(invd_)
         return invd
+
 
     @staticmethod
     def get_invoicedetail_by_id(id):

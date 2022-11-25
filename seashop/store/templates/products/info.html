@@ -70,6 +70,7 @@
               {%for x in pro%}
               <input type="radio" id="{{x.size}}" name="size" value="{{x.size}}" required/>
               <label for="{{x.size}}">{{x.size}}</label>  
+              <input type="hidden" value="{{x.quantity}}" id="qua" >
               {{x.quantity}}
               {%endfor%}
             </div>

@@ -31,7 +31,7 @@
         </div>
         <div class="visible-lg visible-md col-header-mid header-mid-search">
           <div class="search-box wpo-wraper-search">
-              <form action="" class="searchform">
+              <form action="/" class="searchform">
                 <div class="wpo-search-inner">
                   <input type="text" required id="inputsearchauto-mb" name="s" maxlength="40" autocomplete="off" class="searchinput input-search search-input" size="20" placeholder="Tìm kiếm sản phẩm ...">
                   <input name="post_type" value="product" type="hidden">
@@ -95,7 +95,7 @@
 
             <div class="column">
               <h3><a href="/?category=Quan Nam">Quần Nam</a></h3>
-              <a href="/?categorydetail=Quan Au ">Quần Âu</a>
+              <a href="/?categorydetail=Quan Au">Quần Âu</a>
               <a href="/?categorydetail=Quan Jenans">Quần Jeans </a>
               <a href="/?categorydetail=Quan Kaki">Quần Kaki</a>
               <a href="/?categorydetail=Quan Jogger">Quần Jogger</a>
@@ -285,75 +285,11 @@
     <script src="{%static 'js/bootstrap.min.js'%}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script>
+  
 
-  jQuery("#carousel").owlCarousel({
-  autoplay: true,
-  rewind: true, /* use rewind if you don't want loop */
-  margin: 20,
-   /*
-  animateOut: 'fadeOut',
-  animateIn: 'fadeIn',
-  */
-  responsiveClass: true,
-  autoHeight: true,
-  autoplayTimeout: 7000,
-  smartSpeed: 800,
-  nav: true,
-  responsive: {
-    0: {
-      items: 2
-    },
-
-    600: {
-      items: 3
-    },
-
-    1024: {
-      items: 4
-    },
-
-    1366: {
-      items: 4
-    }
-  }
-});
-  </script>
-    
-    <script type="text/javascript">
-      let thumbnails = document.getElementsByClassName('thumbnail')
-    
-      let activeImages = document.getElementsByClassName('active')
-    
-      for (var i=0; i < thumbnails.length; i++){
-    
-          thumbnails[i].addEventListener('mouseover', function(){
-              console.log(activeImages)
-              
-              if (activeImages.length > 0){
-                  activeImages[0].classList.remove('active')
-              }
-             
-    
-              this.classList.add('active')
-              document.getElementById('featured').src = this.src
-          })
-      }
+  
     
     
-      let buttonRight = document.getElementById('slideRight');
-      let buttonLeft = document.getElementById('slideLeft');
-    
-      buttonLeft.addEventListener('click', function(){
-          document.getElementById('slider').scrollLeft -= 180
-      })
-    
-      buttonRight.addEventListener('click', function(){
-          document.getElementById('slider').scrollLeft += 180
-      })
-    
-    
-    </script>
     <script>//side menu drop down
   
       $(document).ready(function(){
@@ -414,6 +350,7 @@
       }
     </script>
 <script>
+var qua=document.getElementById("qua").value
 function setInputFilter(textbox, inputFilter) {
   [
     "input",
@@ -441,8 +378,10 @@ function setInputFilter(textbox, inputFilter) {
 }
 
 setInputFilter(document.getElementById("intTextBox"), function(value) {
-  return /^\d*$/.test(value); });
+  return /^\d*$/.test(value) && (value === "" || parseInt(value) <= qua); });
     </script>
+
+
         <script>
     document.addEventListener('DOMContentLoaded', function() {
     var inputs = document.getElementsByClassName('input-number-wrapper')
@@ -456,7 +395,7 @@ setInputFilter(document.getElementById("intTextBox"), function(value) {
         // var newValue = val > 0 ? val : 0;
         // input.setAttribute("value", newValue);
     }
-    
+   
     Array.prototype.forEach.call(inputs, function(el) {
         var input = el.getElementsByTagName('input')[0]
         
