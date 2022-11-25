@@ -1,8 +1,8 @@
-{%extends 'customer/basecus.html'%}{%load static%}{%block MyAccount_content %}
+{%extends 'customer/basecus.html'%}{%load static%}{%block MyAccount_content%}{%load product%}
 
 <div class="woocommerce-MyAccount-content">
   <div class="woocommerce-notices-wrapper"></div>
-
+  {%if invd%}
   <table
     class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table"
   >
@@ -35,7 +35,7 @@
         </th>
       </tr>
     </thead>
-
+    {%for x in invd%}
     <tbody>
       <tr
         class="woocommerce-orders-table__row woocommerce-orders-table__row--status-cancelled order"
@@ -43,44 +43,59 @@
         <td
           class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-number"
         >
-          <a href="https://360boutique.vn/tai-khoan/view-order/53603/">
-            #53603
-          </a>
+          <a href="/"> #{{x.invoice}} </a>
         </td>
         <td
           class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-date"
         >
-          <time datetime="2022-11-17T13:08:27+00:00"
-            >17 Tháng Mười Một, 2022</time
-          >
+          <time datetime="2022-11-17T13:08:27+00:00">{{x.date}}</time>
         </td>
         <td
           class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-status"
         >
-          Đã hủy
+          {{x.status}}
         </td>
         <td
           class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-total"
         >
           <span class="woocommerce-Price-amount amount"
-            >898.000<span class="woocommerce-Price-currencySymbol"
+            >{{x.invd_total|price}}<span
+              class="woocommerce-Price-currencySymbol"
               >₫</span
             ></span
           >
-          cho 2 mục
+          cho {{x.count_product}} mục
         </td>
         <td
           class="woocommerce-orders-table__cell woocommerce-orders-table__cell-order-actions"
         >
           <a
-            href="https://360boutique.vn/tai-khoan/view-order/53603/"
+            href="view_invoice/{{x.invd_id}}"
             class="woocommerce-button button view"
             >Xem</a
           >
         </td>
       </tr>
     </tbody>
+    {% endfor %}
   </table>
+  {%else%}
+  <div class="woocommerce-message woocommerce-message--info woocommerce-Message woocommerce-Message--info woocommerce-info">
+		<a class="woocommerce-Button button" href="/">Tìm các sản phẩm</a>
+		Bạn chưa có đơn hàng nào.	</div>
+  {%endif%}
 </div>
 
-{% endblock %}
+{% endblock %} 
+
+{%block breadcrumb%}
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5 blog-breadcrumb">
+  <ol class="breadcrumb breadcrumb-arrows">
+    <li><a href="">Trang chủ</a></li>
+    /
+    <li>Đơn hàng</li>
+    /
+    <li>Đơn hàng</li>
+  </ol>
+</div>
+{%endblock%}

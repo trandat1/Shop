@@ -1,37 +1,5 @@
 {%extends 'base.html'%}{%block content %}{%load static%} {%load cart%}
-<style>
-  button.remove {
-    background-color: white;
-    border: 0px;
-    box-shadow: 0px 1px 1px #fff inset;
-    border-radius: 75%;
-  }
-  button.remove:hover {
-    background-color: #d63031;
-    color: #fff;
-  }
-  a.checkout-button.button.alt.wc-forward {
-    background-color: #000 !important;
-    border-radius: 0 !important;
-    color: #fff !important;
-    height: 45px;
-    line-height: 45px !important;
-    margin-bottom: 10px !important;
-    padding: 0 !important;
-    text-align: center;
-    width: 100%;
-  }
-  button.update:hover {
-    cursor: pointer;
-    background-color: #000;
-    color: #fff !important;
-  }
-  button.button:hover {
-    cursor: pointer;
-    background-color: #000;
-    color: #fff !important;
-  }
-</style>
+<link rel="stylesheet" href="{%static 'css/cart.css'%}">
 <div class="content-page">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5 blog-breadcrumb">
     <ol class="breadcrumb breadcrumb-arrows">
@@ -40,6 +8,7 @@
       <li>Giỏ Hàng</li>
     </ol>
   </div>
+  {%if cart%}
   <div class="woocommerce">
     <form class="woocommerce-cart-form" method="post" action="?/">
       {%csrf_token%}
@@ -209,6 +178,17 @@
       </div>
     </div>
   </div>
+  {%else%}
+  <div class="woocommerce">
+    <div class="woocommerce-notices-wrapper"></div>
+    <p class="cart-empty woocommerce-info">
+      Chưa có sản phẩm nào trong giỏ hàng.
+    </p>
+    <p class="return-to-shop">
+      <a class="button wc-backward" href="/"> Quay trở lại cửa hàng </a>
+    </p>
+  </div>
+  {%endif%}
 </div>
 
 {% endblock %}

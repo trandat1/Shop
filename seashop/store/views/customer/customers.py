@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from store.models.customer.cart import Cart
 from store.models.products.categories import category
+from store.models.customer.addressdetail import Addressdetail
 
 
 class page_customer():
@@ -38,5 +39,10 @@ class page_customer():
 
    
     def address(request):
+        cus = request.session.get('customer_id')
+        addr = Addressdetail.get_address_by_cus(cus)
+        context={
+            'addr': addr
+        }
         template = loader.get_template('customer/address.html')
-        return HttpResponse(template.render())
+        return HttpResponse(template.render(context, request))

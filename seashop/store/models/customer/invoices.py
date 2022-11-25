@@ -38,4 +38,11 @@ class Invoice(models.Model):
 
     @staticmethod
     def get_invoice(cus):
-        return Invoice.objects.filter(customer=cus)
+        if Invoice.objects.all().filter(customer=cus):
+             return Invoice.objects.filter(customer=cus)
+        else:
+            return None
+   
+    @staticmethod
+    def get_invoice_by_id(id):
+        return Invoice.objects.all().get(id=id)

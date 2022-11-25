@@ -25,3 +25,7 @@ class Productdetail(models.Model):
         product_ = Product.get_product_by_name(name)
         pro = Productdetail.objects.all().filter(product=product_.id)
         return pro
+
+    @staticmethod
+    def get_product_by_id(id):
+        return Productdetail.objects.all().get(id=id)

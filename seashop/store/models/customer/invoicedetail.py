@@ -1,15 +1,16 @@
 from django.db import models
-from django.db.models import Sum,Count
+from django.db.models import Sum, Count
 from .invoices import Invoice
 from store.models.products.productdetail import Productdetail
 from store.models.products.product import Product
-# from store.models.products.sizes import Size
+from store.models.products.sizes import Size
 # from invoices import Invoice
 
 
 class Invoicedetail(models.Model):
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
-    product = models.ForeignKey(Productdetail, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,default='')
+    size=models.ForeignKey(Size, on_delete=models.CASCADE,default='')
     amount = models.IntegerField(default=1)
     total = models.IntegerField(default=0)
 
@@ -17,26 +18,48 @@ class Invoicedetail(models.Model):
     def set_invoicedetail(email, name, phone, cus, address, province, city, date, request):
         invoice = Invoice.set_invoice(
             email, name, phone, cus, address, province, city, date)
-             
+
         cart = request.session.get('cart')
-        total=0
+
         for x in cart:
-            prt_= Product.objects.all().get(id=x.get('product'))
-            total=total+prt_.price*x.get('quatity')
-        
-        for x in cart:
-            prt = Productdetail.objects.all().get(id=x.get('product'))
-            prt_= Product.get_product_by_id(id=x.get('product'))       
-            inv=Invoicedetail(invoice=invoice,product=prt,amount=x.get('quatity'),total=prt_.price*x.get('quatity'))
+            size=Size.get_size(x.get('size'))
+            prt_ = Product.get_product_by_id(x.get('product'))
+            inv = Invoicedetail(invoice=invoice, product=prt_, amount=x.get(
+                'quatity'), total=prt_.price*x.get('quatity'),size=size)
             inv.save()
-        
-       
+
     @staticmethod
     def get_invoicedetail(cus):
-        inv=Invoice.get_invoice(cus)
-        # invd={}
+        inv = Invoice.get_invoice(cus)
+        invd = []
         for x in inv:
-            # invd['total']= Invoicedetail.objects.all().filter(invoice=x.id).aggregate(Sum('total'))
-            invd=Invoice.objects.annotate(count=Count('invoicedetail')).filter(id=x.id)
-            # invd['cout_prt']=invd_[0].count
+            invd_ = {}
+            invd_['invoice'] = x.id
+            invd_['status'] = x.status
+            invd_['date'] = x.date
+            total = Invoicedetail.objects.all().filter(
+                invoice=x.id).aggregate(Sum('total'))
+            invd_['invd_total'] = total.get('total__sum')
+            invd__ = (Invoice.objects.annotate(
+                count=Count('invoicedetail')).filter(id=x.id))
+            invd_['count_product'] = invd__[0].count
+            invd_['invd_id'] = invd__[0].id
+            invd.append(invd_)
         return invd
+
+    @staticmethod
+    def get_invoicedetail_by_id(id):
+
+        invd_ = Invoicedetail.objects.all().filter(invoice=id)
+        invd = []
+
+        for x in invd_:
+            invd__ = {}
+            pr = x.product
+                
+            invd__['product'] = pr.name
+            invd__['size'] =x.size.size
+            invd__['amount'] = x.amount
+            invd__['total_price'] = pr.price*x.amount
+            invd.append(invd__)
+        return (invd)

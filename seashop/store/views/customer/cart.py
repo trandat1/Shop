@@ -8,7 +8,7 @@ class Cart(View):
     def get(self, request):
         cart = request.session.get('cart')
         template = loader.get_template('customer/cart.html')
-        # print(cart)
+        print(cart)
         context = {
             'cart': cart,
             'count': len(cart)

@@ -19,3 +19,6 @@ class Size(models.Model):
 
     def __str__(self):
         return self.size
+    @staticmethod
+    def get_size(name):
+        return Size.objects.all().get(size=name)

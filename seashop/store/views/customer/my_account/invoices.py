@@ -6,22 +6,26 @@ from store.models.customer.invoices import Invoice
 from django.views import View
 
 
-class Info_invoices(View):
+class invoices(View):
     def get(self, request):
         cus = request.session.get('customer_id')
         cart = request.session.get('cart')
-        invd = Invoicedetail.get_invoicedetail(cus)
+        inv=Invoice.get_invoice(cus)
+        if inv:
+            invd = Invoicedetail.get_invoicedetail(cus)  
+        else:
+            invd=None
         print(invd)
-        print(invd[0].count)
-        inv = Invoice.get_invoice(cus)
-        for x in inv:
-            print(x.status)
+        # inv = Invoice.get_invoice(cus)
+
+
         if not cart:
             cart = []
             request.session['cart'] = []
 
+
         context = {
-            'inv': inv,
+            'invd': invd,
             'count': len(cart)
         }
 

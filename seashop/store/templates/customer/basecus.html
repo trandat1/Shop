@@ -3,13 +3,9 @@
 <div id="article">
   <div class="container-fluid">
     <div class="row breadcrumb-shop">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5 blog-breadcrumb">
-        <ol class="breadcrumb breadcrumb-arrows">
-          <li><a href="">Trang chủ</a></li>
-          /
-          <li>Tài Khoản</li>
-        </ol>
-      </div>
+      {%block breadcrumb%}
+      
+      {%endblock%}
     </div>
     <br />
     <div class="content-page">
@@ -27,7 +23,7 @@
             <li
               class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders"
             >
-              <a href="invoice">Đơn hàng</a>
+              <a href="/customer/invoice">Đơn hàng</a>
             </li>
             <li
               class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--downloads"
@@ -37,12 +33,12 @@
             <li
               class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-address"
             >
-              <a href="address">Địa chỉ</a>
+              <a href="/customer/address">Địa chỉ</a>
             </li>
             <li
               class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--edit-account"
             >
-              <a href="Update_account">Tài khoản</a>
+              <a href="/customer/Update_account">Tài khoản</a>
             </li>
             <li
               class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--customer-logout"

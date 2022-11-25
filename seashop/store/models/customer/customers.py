@@ -19,8 +19,10 @@ class Customer(models.Model):
     @staticmethod
     def get_customer(u, pa):
         p = hashlib.md5(pa.encode()).hexdigest()
-        if Customer.objects.filter(Username=u, password=p) or Customer.objects.filter(email=u, password=p):
+        if Customer.objects.filter(email=u, password=p):
             return Customer.objects.all().get(email=u)
+        if Customer.objects.filter(Username=u, password=p):
+            return Customer.objects.all().get(Username=u)
         else:
             return None
 

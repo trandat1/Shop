@@ -19,7 +19,7 @@ class Product(models.Model):
         return Product.objects.all().values()
 
     def get_product_by_name(name):
-        return Product.objects.all().filter(name=name)
+        return Product.objects.all().get(name=name)
 
     def get_product_by_id(id):
         return Product.objects.all().get(id=id)
