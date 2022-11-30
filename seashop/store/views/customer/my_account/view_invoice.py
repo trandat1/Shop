@@ -4,7 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from store.models.customer.invoicedetail import Invoicedetail
 from store.models.customer.invoices import Invoice
 from django.views import View
-
+from store.models.customer.statusinvoice import status
+import datetime
 
 class view_invoices(View):
     def get(self, request, id):
@@ -12,8 +13,9 @@ class view_invoices(View):
         cart = request.session.get('cart')
         invd_ = Invoicedetail.get_invoicedetail_by_id(id)
 
-        
         inv = Invoice.get_invoice_by_id(id)
+        st = status.get_status(inv.id)
+        print(datetime.datetime.now())
         if not cart:
             cart = []
             request.session['cart'] = []
@@ -21,7 +23,8 @@ class view_invoices(View):
         context = {
             'invd': invd_,
             'id': id,
-            'inv':inv,
+            # 'inv': inv,
+            'st': st,
             'count': len(cart)
         }
 

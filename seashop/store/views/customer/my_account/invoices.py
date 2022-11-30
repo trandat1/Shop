@@ -18,7 +18,8 @@ class invoices(View):
         print(invd)
         # inv = Invoice.get_invoice(cus)
 
-
+            
+            # print(x.date)
         if not cart:
             cart = []
             request.session['cart'] = []

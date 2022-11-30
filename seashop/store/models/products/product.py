@@ -12,6 +12,7 @@ class Product(models.Model):
     status = models.CharField(max_length=10, choices=status, default='1')
     description = models.CharField(max_length=255)
 
+
     def __str__(self):
         return self.name
 

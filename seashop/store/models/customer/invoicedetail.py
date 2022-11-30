@@ -4,6 +4,7 @@ from .invoices import Invoice
 from store.models.products.productdetail import Productdetail
 from store.models.products.product import Product
 from store.models.products.sizes import Size
+from .statusinvoice import status
 # from invoices import Invoice
 
 
@@ -17,8 +18,8 @@ class Invoicedetail(models.Model):
     @staticmethod
     def set_invoicedetail(email, name, phone, cus, address, province, city, date, request):
         invoice = Invoice.set_invoice(
-            email, name, phone, cus, address, province, city, date)
-
+            email, name, phone, cus, address, province, city)
+        status.set_status(invoice,date)
         cart = request.session.get('cart')
 
         for x in cart:
@@ -35,9 +36,10 @@ class Invoicedetail(models.Model):
         invd = []
         for x in inv:
             invd_ = {}
+            st=status.get_status(x.id)
             invd_['invoice'] = x.id
-            invd_['status'] = x.status
-            invd_['date'] = x.date
+            invd_['status'] = st.status
+            invd_['date'] = st.date
             total = Invoicedetail.objects.all().filter(
                 invoice=x.id).aggregate(Sum('total'))
             invd_['invd_total'] = total.get('total__sum')

@@ -1,12 +1,12 @@
-{%extends 'customer/basecus.html'%}{%load static%}{%block MyAccount_content%}{%load product%}
+{%extends 'customer/basecus.html'%}{%load static%}{%block MyAccount_content%}{%load invoices%}
 <link rel="stylesheet" href="{%static 'css/address.css'%} " />
 
 <div class="woocommerce-MyAccount-content">
   <div class="woocommerce-notices-wrapper"></div>
   <p>
     Đơn hàng #<mark class="order-number">{{id}}</mark> đã được đặt lúc
-    <mark class="order-date">17 Tháng Mười Một, 2022</mark> và hiện tại là
-    <mark class="order-status">{{inv.status}}</mark>.
+    <mark class="order-date">{{st.date|date_invoice}}</mark> và hiện tại là
+    <mark class="order-status">{{st.status|status}}</mark>.
   </p>
 
   <section class="woocommerce-order-details">

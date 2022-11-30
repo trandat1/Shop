@@ -1,6 +1,5 @@
 from django.db import models
 from .customers import Customer
-
 # from .invoicedetail import Invoicedetail
 
 
@@ -10,20 +9,13 @@ class Invoice(models.Model):
     email = models.CharField(max_length=255, default='')
     phone = models.CharField(max_length=11, default='')
 #     invoicedetail = models.ForeignKey(Invoicedetail, on_delete=models.CASC)
-    date = models.DateTimeField(default='')
-    status = [
-        ('success', '1'),
-        ('wait', '0'),
-        ('return', '2'),
-        ('revoke', '3')
-    ]
     address = models.CharField(max_length=255)
     province = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
-    status = models.CharField(max_length=10, choices=status, default='success')
+
 
     @staticmethod
-    def set_invoice(email, name, phone, cus, address, province, city, date):
+    def set_invoice(email, name, phone, cus, address, province, city):
         cus = Customer.objects.get(id=cus)
         if not name:
             name = cus.Username
@@ -32,7 +24,7 @@ class Invoice(models.Model):
         if not phone:
             phone = cus.phone
         invoice = Invoice(name=name, email=email, phone=phone, customer=cus,
-                          address=address, province=province, city=city, date=date)
+                          address=address, province=province, city=city)
         invoice.save()
         return invoice
 

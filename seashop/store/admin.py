@@ -6,6 +6,7 @@ from .models.products.productdetail import Productdetail
 from .models.products.categoriedetail import categorydetail
 from .models.products.categorize import Categorize
 from .models.customer.invoices import Invoice
+from .models.customer.statusinvoice import status
 class Products(admin.ModelAdmin):
     list_display = ['name', 'price', 'description']
 
@@ -19,6 +20,10 @@ class Category(admin.ModelAdmin):
 
 class categorize(admin.ModelAdmin):
     list_display = ['name']
+    
+   
+class Status(admin.ModelAdmin):
+    list_display = ['Invoice', 'status','date']
 
 
 class size(admin.ModelAdmin):
@@ -36,3 +41,4 @@ admin.site.register(Size, size)
 admin.site.register(Productdetail, productdetail)
 admin.site.register(categorydetail, Categorydetail)
 admin.site.register(Categorize,categorize)
+admin.site.register(status,Status)
