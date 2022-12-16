@@ -10,6 +10,9 @@ from .views.customer.my_account.update_account import Update_account
 from .views.customer.my_account.invoices import invoices
 from .views.customer.my_account.view_invoice import view_invoices
 from .views.customer.my_account.edit_address import Edit_address
+
+
+
 urlpatterns = [
     path('', home.index, name='index'),
     path('login', Login.as_view(), name='login'),

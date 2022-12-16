@@ -180,41 +180,58 @@ fieldset {
   box-shadow: none;
   text-shadow: none;
 }
- .woocommerce button.button{
-    font-size: 100%;
-    margin: 0;
-    line-height: 1;
-    cursor: pointer;
-    position: relative;
-    text-decoration: none;
-    overflow: visible;
-    padding: 0.618em 1em;
-    font-weight: 700;
-    border-radius: 3px;
-    left: auto;
-    color: #515151;
-    background-color: #ebe9eb;
-    border: 0;
-    display: inline-block;
-    background-image: none;
-    box-shadow: none;
-    text-shadow: none;
+.woocommerce button.button {
+  font-size: 100%;
+  margin: 0;
+  line-height: 1;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  overflow: visible;
+  padding: 0.618em 1em;
+  font-weight: 700;
+  border-radius: 3px;
+  left: auto;
+  color: #515151;
+  background-color: #ebe9eb;
+  border: 0;
+  display: inline-block;
+  background-image: none;
+  box-shadow: none;
+  text-shadow: none;
 }
-.woocommerce form .form-row-first{
-    float: left;
+.woocommerce form .form-row-first {
+  float: left;
 }
 .woocommerce form .form-row-last {
-    float: right;
+  float: right;
 }
-.woocommerce form .form-row-first, .woocommerce form .form-row-last {
-    width: 47%;
-    overflow: visible;
+.woocommerce form .form-row-first,
+.woocommerce form .form-row-last {
+  width: 47%;
+  overflow: visible;
 }
 .woocommerce form .form-row-wide {
-    clear: both;
+  clear: both;
 }
 address {
-    margin-bottom: 20px;
-    font-style: normal;
-    line-height: 1.42857143;
+  margin-bottom: 20px;
+  font-style: normal;
+  line-height: 1.42857143;
+}
+.woocommerce-error {
+  border-top-color: #b81c23;
+}
+.woocommerce-error,
+.woocommerce-info,
+.woocommerce-message {
+  padding: 1em 2em 1em 3.5em;
+  margin: 0 0 2em;
+  position: relative;
+  background-color: #f7f6f7;
+  color: #515151;
+  border-top: 3px solid #a46497;
+  list-style: none outside;
+  width: auto;
+  word-wrap: break-word;
 }

@@ -2,6 +2,18 @@
 
 <div class="container-content">
   <div class="container-fluid">
+    {%if e%}
+    {%block erro%}
+    <div class="woocommerce-notices-wrapper">
+      <ul class="woocommerce-error" role="alert">
+        <li>
+          Tên người dùng không xác định. Kiểm tra lại hoặc thử địa chỉ email của
+          bạn.
+        </li>
+      </ul>
+    </div>
+    {%endblock%}
+    {%endif%}
     <div class="breadcrumb-shop">
       <ol class="breadcrumb breadcrumb-arrows">
         <li>

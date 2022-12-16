@@ -1,7 +1,16 @@
 from store.models.customer.customers import Customer
+import re
 
 
 class Check_Validate():
+
+    def check(email):
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        if (re.fullmatch(regex, email)):
+            return None
+        else:
+            return "Invalid Email"
+
     def validate(u, e, p, r):
         erro = {'email': None, 'username': None, 'password': None}
         cout = 0
@@ -30,10 +39,14 @@ class Check_Validate():
                     cout1 += 1
         if len(p) < 8 or len(p) > 16 or cout < 4 or cout1 == 0:
             erro['password'] = "Password is 8-16 characters long with uppercase,number, lowercase and special and not space"
-
-        if Customer.objects.filter(email=e):
-            erro['email'] = "Email is already in use"
-        elif Customer.objects.filter(Username=u):
+        if not Check_Validate().check(e):
+            if Customer.objects.filter(email=e):
+                erro['email'] = "Email is already in use"
+                
+        elif Check_Validate().check(e):
+            erro['email'] = Check_Validate.check(e)
+            
+        if Customer.objects.filter(Username=u):
             erro['username'] = "User is already in use"
 
         elif r != p:
